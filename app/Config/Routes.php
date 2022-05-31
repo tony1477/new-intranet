@@ -154,6 +154,8 @@ $routes->get('maps-google', 'Home::show_maps_google');
 $routes->get('maps-vector', 'Home::show_maps_vector');
 $routes->get('maps-leaflet', 'Home::show_maps_leaflet');
 
+// INTRA
+$routes->get('group-divisi', 'Grupdivisi::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
