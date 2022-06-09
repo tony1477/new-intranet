@@ -18,13 +18,13 @@ class Grupdivisi extends BaseController
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $getdivisi = getDivisi();
+        $getgroupdivisi = getGroupDivisi();
         //$submenu = getSubmenu($moduleid=0);
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Dashboard']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
 			'modules' => $menu,
-            'divisi' => $getdivisi,
+            'groupdivisi' => $getgroupdivisi,
 		];
 		
 		return view('master/grupdivisi', $data);

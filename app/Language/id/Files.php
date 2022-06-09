@@ -121,7 +121,9 @@ return [
 
     // Custom
     "Group_Divisi" => "Divisi Grup",
+    "Divisi" => "Divisi",
     "Intranet" => "Intranet",
     "Add_Divisi_Group" => "Tambah Divisi Grup",
+    "Add_Divisi" => "Tambah Divisi ",
     "Add" => "Tambah"
 ];
