@@ -21,7 +21,7 @@ class Grupdivisi extends BaseController
         $getdivisi = getDivisi();
         //$submenu = getSubmenu($moduleid=0);
 		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
+			'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
 			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Dashboard']),
 			'modules' => $menu,
             'divisi' => $getdivisi,

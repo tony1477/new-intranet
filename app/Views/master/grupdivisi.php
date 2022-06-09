@@ -129,7 +129,6 @@
 </div>
 <!-- END layout-wrapper -->
 
-
 <?= $this->include('partials/right-sidebar') ?>
 
 <!-- JAVASCRIPT -->
@@ -155,9 +154,6 @@
 <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-<!-- Datatable init js -->
-
-
 <script src="assets/js/app.js"></script>
 <script>
     $(document).ready(function() {
@@ -168,10 +164,10 @@
             lengthChange: false,
             buttons: [
             {
-                text: 'Tambah',
+                text: '<?= lang('Files.Add')?>',
                 action: function ( e, dt, node, config ) {
                     let str = document.querySelector('#staticdivisiGroupLabel')
-                    str.innerHTML = 'Tambah Grup Divisi'
+                    str.innerHTML = '<?=  lang('Files.Add_Divisi_Group')  ?>'
                     document.getElementById("id").value = '';
                     document.getElementById("kode").value = '';
                     document.getElementById("namadivisi").value = '';

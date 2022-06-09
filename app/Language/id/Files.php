@@ -2,12 +2,12 @@
 
 /**
  * Files language strings.
- * Language=> en => English
+ * Language=> id => Indonesia
  */
 
 return [
     "Menu" => "Menu",
-    "Dashboard" => "Dashboard",
+    "Dashboard" => "Beranda",
     "Apps" => "Apps",
     "Calendar" => "Calendar",
     "Chat" => "Chat",
@@ -120,7 +120,8 @@ return [
     "Utility" => "Utility",
 
     // Custom
-    "Group_Divisi" => "Group Divisi",
+    "Group_Divisi" => "Divisi Grup",
     "Intranet" => "Intranet",
-    "Add_Divisi_Group" => "Add Group Division",
+    "Add_Divisi_Group" => "Tambah Divisi Grup",
+    "Add" => "Tambah"
 ];
