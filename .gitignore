@@ -18,4 +18,5 @@ application/logs/*
 /writable/
 writable/logs/*
 writable/session/*
+.env
 

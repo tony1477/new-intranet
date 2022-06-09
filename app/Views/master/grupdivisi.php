@@ -46,10 +46,11 @@
                             </div>
                             <div class="card-body">
 
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 divisiGroup">
+                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 divisiGroup">
                                     <thead>
                                         <tr>
                                             <th>Aksi</th>
+                                            <th>ID</th>
                                             <th>Kode Divisi</th>
                                             <th>Nama Divisi</th>
                                             <th>User Created</th>
@@ -63,6 +64,7 @@
                                                     <a class="btn btn-soft-secondary waves-effect waves-light btn-sm editDivisiGroup" title="Edit" data-bs-toggle="modal" data-bs-target="#editGroup"><i class="fas fa-pencil-alt" title="Edit"></i></a>
                                                     <a class="btn btn-soft-danger waves-effect waves-light btn-sm deleteDivisiGroup" title="Hapus" ><i class="fas fa-trash-alt" title="Hapus"></i></a>
                                                 </td>
+                                                <td><?=$list->iddivisigroup?></td>
                                                 <td><?=$list->gdiv_kode?></td>
                                                 <td><?=$list->gdiv_nama?></td>
                                                 <td><?=$list->user_c?></td>
@@ -71,15 +73,15 @@
                                         <?php endforeach;?>
                                     </tbody>
                                 </table>
-                                <div class="modal fade" id="editGroup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" id="editGroup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticdivisiGroupLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Edit Grup Divisi</h5>
+                                                <h5 class="modal-title" id="staticdivisiGroupLabel"></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form novalidate method="post">
+                                                <form novalidate method="post" name="groupdivisi">
                                                     <input type="hidden" />
                                                     <div class="col-xl-4 col-md-6">
                                                         <div class="form-group mb-3">
@@ -91,6 +93,7 @@
                                                                 <?php endforeach;?>
                                                             <div class="pristine-error text-help">Kode Divisi Harus Diisi</div> 
                                                         </select> -->
+                                                        <input type="hidden" name="id" id="id" class="form-control" required value="" />
                                                         <input type="text" name="kode" id="kode" class="form-control" required value="" />
                                                         </div>
                                                     </div>
@@ -105,7 +108,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                                <button type="submit" class="btn btn-primary save">Simpan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -153,45 +156,94 @@
 <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
 <!-- Datatable init js -->
-<script src="assets/js/pages/datatables.init.js"></script>
+
 
 <script src="assets/js/app.js"></script>
 <script>
-    
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+
+        //Buttons examples
+        var table = $('#datatable-buttons').DataTable({
+            lengthChange: false,
+            buttons: [
+            {
+                text: 'Tambah',
+                action: function ( e, dt, node, config ) {
+                    let str = document.querySelector('#staticdivisiGroupLabel')
+                    str.innerHTML = 'Tambah Grup Divisi'
+                    document.getElementById("id").value = '';
+                    document.getElementById("kode").value = '';
+                    document.getElementById("namadivisi").value = '';
+                    $('#editGroup').modal('show')
+                }
+            },
+            'excel', 'pdf', 'colvis',
+            ]
+        });
+
+        // var column = table.column('ID'.attr('data-column'));
+        table.buttons().container()
+            .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+
+        // table.columns(1).visible(false)
+        $(".dataTables_length select").addClass('form-select form-select-sm');
+    })
+
+    // const table = $('#datatable').DataTable()
     async function deleteData(url='',data={}) {
         const response = await fetch(url, {
-            method:'post',
+            method:'POST',
             mode:'cors',
             cache:'no-cache',
             creadentials:'same-origin',
             headers: {
                 'Content-Type':'application/json',
+                "X-Requested-With": "XMLHttpRequest"
             },
             body: JSON.stringify(data)
-        })
+        })        
         return response.json()
     }
 
+    async function postData(url='',data={}) {
+        const response = await fetch(url,{
+            method:'POST',
+            mode:'cors',
+            cache:'no-cache',
+            creadentials:'same-origin',
+            headers: {
+                'Content-Type':'application/json',
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: JSON.stringify(data)
+        })
+
+        return response.json()
+    }
     const editButton = document.querySelectorAll(".editDivisiGroup");
     const deleteButton = document.querySelectorAll('.deleteDivisiGroup')
+    const saveButton = document.querySelector('.save');
     const selected = document.querySelectorAll("input#kode");
 
     for (let i = 0; i < editButton.length; i++) {
         editButton[i].addEventListener("click", function() {
-            let optionvalue = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(1).innerHTML
-            let nama = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(2).innerHTML
-            // selected.value = "EST"
-            // selected.forEach(val => {
-            //     console.log(val)
-            // })
-            // console.log(selected.selectedIndex=1)
-            document.getElementById("kode").value = optionvalue;
+            let id = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(1).innerHTML
+            let kode = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(2).innerHTML
+            let nama = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(3).innerHTML
+            // console.log(id,kode,nama)
+            let str = document.querySelector('#staticdivisiGroupLabel')
+                    // console.log(str.html)
+            str.innerHTML = 'Edit Grup Divisi'
+            document.getElementById("id").value = id;
+            document.getElementById("kode").value = kode;
             document.getElementById("namadivisi").value = nama;
         });
     }
 
-    for(let i=0; i<deleteButton.length; i++) {
+    for(let i=0; i< deleteButton.length; i++) {
         deleteButton[i].addEventListener("click", function() {
+        let kode = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(2).innerHTML
         Swal.fire({
             title: "Apakah Anda Yakin Menghapus Data ?",
             text: "",
@@ -201,18 +253,41 @@
             cancelButtonColor: "#fd625e",
             confirmButtonText: "Ya, Hapus Data!"
         }).then(function (result) {
+            const reqbody = {'kode':kode}
             if (result.value) {
-                deleteData('<?=base_url()?>/group-divisi/delete', {'kode':'TES'}).then(res => {
-                    console.log(res)
+                deleteData('<?=base_url()?>/group-divisi/delete', {'kode':kode})
+                .then(data => {
+                    // console.log(data)
+                    if(data.code === 200) 
+                    Swal.fire("Deleted!", data.message, data.status)
+                    // table.ajax.reload()
+                    // Swal.clickConfirm()
+                    setTimeout(() => location.reload(), 1500)
                 })
-                //Swal.fire("Deleted!", "Data sudah terhapus.", "success");
+                .catch(err => {
+                    console.log('Error',err)
+                })
+                // console.log(table)
             }
         });
         });
     }
 
-    // Warning Message
-    //const deleteButton = document.querySelector('.deleteDivisiGroup')
+    saveButton.addEventListener("click", function(){
+        const id =  document.forms["groupdivisi"]["id"].value;
+        const kode =  document.forms["groupdivisi"]["kode"].value;
+        const nama =  document.forms["groupdivisi"]["namadivisi"].value;
+        const data = [id, kode, nama]
+        postData('<?=base_url()?>/group-divisi/post',{'data':data})
+        .then(data => {
+            // console.log(data)
+            if(data.code === 200) $('#editGroup').modal('hide'); Swal.fire("Success!", data.message, data.status);
+                    // table.ajax.reload()
+                    // Swal.clickConfirm()
+            setTimeout(() => location.reload(), 1500)
+        })
+        
+    })
 </script>
 </body>
 
