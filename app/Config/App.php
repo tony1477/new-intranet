@@ -23,7 +23,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost:80';
+    public $baseURL = 'http://localhost:8080';
 
     /**
      * --------------------------------------------------------------------------
@@ -96,7 +96,7 @@ class App extends BaseConfig
      *
      * @var string[]
      */
-    public $supportedLocales = ['en', 'es', 'de', 'it', 'ru'];
+    public $supportedLocales = ['en', 'es', 'de', 'it', 'ru','id'];
 
     /**
      * --------------------------------------------------------------------------

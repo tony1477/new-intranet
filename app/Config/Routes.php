@@ -155,7 +155,16 @@ $routes->get('maps-vector', 'Home::show_maps_vector');
 $routes->get('maps-leaflet', 'Home::show_maps_leaflet');
 
 // INTRA
+## GroupDivisi
 $routes->get('group-divisi', 'Grupdivisi::index');
+$routes->post('group-divisi/delete', 'Grupdivisi::delete');
+$routes->post('group-divisi/post', 'Grupdivisi::save');
+
+## Divisi
+$routes->get('data-divisi', 'Divisi::index');
+// RESOURCE
+//$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

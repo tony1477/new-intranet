@@ -8,7 +8,7 @@
                         <img src="assets/images/logo-sm.svg" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">WPG</span>
                     </span>
                 </a>
 
@@ -17,7 +17,7 @@
                         <img src="assets/images/logo-sm.svg" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">WPG</span>
                     </span>
                 </a>
             </div>
@@ -61,23 +61,14 @@
                     $session = \Config\Services::session();
                     $lang = $session->get('lang');
                     switch ($lang) {
+                        case 'id':
+                            echo '<img src="assets/images/flags/id.jpg" alt="Header Language" height="16">';
+                            break;
                         case 'en':
                             echo '<img src="assets/images/flags/us.jpg" alt="Header Language" height="16">';
                             break;
-                        case 'es':
-                            echo '<img src="assets/images/flags/spain.jpg" alt="Header Language" height="16">';
-                            break;
-                        case 'de':
-                            echo '<img src="assets/images/flags/germany.jpg" alt="Header Language" height="16">';
-                            break;
-                        case 'it':
-                            echo '<img src="assets/images/flags/italy.jpg" alt="Header Language" height="16">';
-                            break;
-                        case 'ru':
-                            echo '<img src="assets/images/flags/russia.jpg" alt="Header Language" height="16">';
-                            break;
                         default:
-                            echo '<img src="assets/images/flags/us.jpg" alt="Header Language" height="16">';
+                            echo '<img src="assets/images/flags/id.jpg" alt="Header Language" height="16">';
                     }
                     ?>
                 </button>
@@ -85,24 +76,12 @@
 
                     <!-- item-->
                     
+                        <a href="<?= base_url('lang/id'); ?>" class="dropdown-item notify-item language" data-lang="id">
+                            <img src="assets/images/flags/id.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Bahasa</span>
+                        </a>
+
                         <a href="<?= base_url('lang/en'); ?>" class="dropdown-item notify-item language" data-lang="en">
                             <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
-                        </a>
-                   
-                        <a href="<?= base_url('lang/es'); ?>" class="dropdown-item notify-item language" data-lang="sp">
-                            <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                        </a>
-                    
-                        <a href="<?= base_url('lang/de'); ?>" class="dropdown-item notify-item language" data-lang="gr">
-                            <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                        </a>
-                    
-                        <a href="<?= base_url('lang/it'); ?>" class="dropdown-item notify-item language" data-lang="it">
-                            <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                        </a>
-                    
-                        <a href="<?= base_url('lang/ru'); ?>" class="dropdown-item notify-item language" data-lang="ru">
-                            <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                         </a>
 
                 </div>
@@ -116,7 +95,7 @@
             </div>
 
             <div class="dropdown d-none d-lg-inline-block ms-1">
-                <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="grid" class="icon-lg"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
@@ -163,7 +142,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="dropdown d-inline-block">
@@ -253,11 +232,11 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block">
+            <!-- <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item right-bar-toggle me-2">
                     <i data-feather="settings" class="icon-lg"></i>
                 </button>
-            </div>
+            </div> -->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

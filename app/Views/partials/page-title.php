@@ -6,9 +6,9 @@
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?= $li_1 ?></a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);"><?= $li_1 ? lang('Files.'.$li_1) : '' ?></a></li>
                     <?php if(isset($li_2)):  ?>
-                        <li class="breadcrumb-item active"><?= $li_2 ?></li>
+                        <li class="breadcrumb-item active"><?= $li_2 ? lang('Files.'.$li_2) : '' ?></li>
                     <?php endif ?>
                 </ol>
             </div>
