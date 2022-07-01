@@ -24,7 +24,7 @@
                         ?>
                         <li>
                             <a href="<?=$menu->url?>">
-                                <span data-key="t-<?=$menu->menucode?>"><?=$menu->menuname?></span>
+                                <span data-key="t-<?=$menu->menucode?>"><?=lang('Files.'.$menu->menucode)?></span>
                             </a>
                         </li>
                         <?php endforeach;?>

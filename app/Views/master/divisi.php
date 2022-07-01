@@ -49,13 +49,13 @@
                                 <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 divisi">
                                     <thead>
                                         <tr>
-                                            <th>Aksi</th>
-                                            <th>ID</th>
-                                            <th>Nama Group</th>
-                                            <th>Kode Divisi</th>
-                                            <th>Nama Divisi</th>
-                                            <th>User Created</th>
-                                            <th>User Modified</th>
+                                            <th><?= lang('Files.Action')?></th>
+                                            <th><?= lang('Files.Id')?></th>
+                                            <th><?= lang('Files.Name_GroupDivisi')?></th>
+                                            <th><?= lang('Files.Code_Divisi')?></th>
+                                            <th><?= lang('Files.Name_Divisi')?></th>
+                                            <th><?= lang('Files.User_Created')?></th>
+                                            <th><?= lang('Files.User_Modified')?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,29 +85,29 @@
                                             <div class="modal-body">
                                                 <form novalidate method="post" name="divisi">
                                                     <input type="hidden" />
-                                                    <div class="col-xl-4 col-md-6">
+                                                    <div class="col-xl-8 col-md-8">
                                                         <div class="form-group mb-3">
-                                                            <label>Kode Divisi</label>
+                                                            <label><?=lang('Files.Code_GroupDivisi')?></label>
                                                             <input type="hidden" name="id" id="id" class="form-control" required value="" />
                                                             <select name="idgroup" id="idgroup" class="form-select">
                                                                 <option value="">-</option>
-                                                                <?php foreach($divisi as $opt):?>
+                                                                <?php foreach($group as $opt):?>
                                                                     <option value="<?=$opt->iddivisigroup?>"><?=$opt->gdiv_nama?></option>
                                                                 <?php endforeach;?>
                                                             <!-- <div class="pristine-error text-help">Kode Divisi Harus Diisi</div>  -->
                                                         </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-4 col-md-6">
+                                                    <div class="col-xl-8 col-md-8">
                                                         <div class="form-group mb-3">
-                                                            <label>Kode Divisi</label>
+                                                            <label><?=lang('Files.Code_Divisi')?></label>
                                                         <input type="hidden" name="id" id="id" class="form-control" required value="" />
                                                         <input type="text" name="kode" id="kode" class="form-control" required value="" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-4 col-md-6">
+                                                    <div class="col-xl-8 col-md-8">
                                                         <div class="form-group mb-3">
-                                                            <label>Nama Divisi</label>
+                                                            <label><?=lang('Files.Name_Divisi')?></label>
                                                             <input type="text" required data-pristine-required-message="Isikan Nama Divisi" class="form-control" value="" id="namadivisi" />
                                                         <!-- <div class="pristine-error text-help">Nama Divisi Harus Diisi</div> -->
                                                         </div>
@@ -115,8 +115,8 @@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary save">Simpan</button>
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal"><?=lang('Files.Close')?></button>
+                                                <button type="submit" class="btn btn-primary save"><?=lang('Files.Save')?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@
                 text: '<?= lang('Files.Add')?>',
                 action: function ( e, dt, node, config ) {
                     let str = document.querySelector('#staticDivisiLabel')
-                    str.innerHTML = '<?=  lang('Files.Add_Divisi')  ?>'
+                    str.innerHTML = '<?=  lang('Files.Add'),' ',lang('Files.Divisi')  ?>'
                     document.getElementById("id").value = '';
                     document.getElementById("kode").value = '';
                     document.getElementById("namadivisi").value = '';
@@ -229,16 +229,24 @@
     const deleteButton = document.querySelectorAll('.deleteDivisi')
     const saveButton = document.querySelector('.save');
     const selected = document.querySelectorAll("input#kode");
+    const $select = document.querySelector('#idgroup')
+    const $option = Array.from($select.options)
 
     for (let i = 0; i < editButton.length; i++) {
+        console.log(editButton[i])
         editButton[i].addEventListener("click", function() {
+            
             let id = document.querySelector('table.divisi').rows.item(i+1).cells.item(1).innerHTML
+            let group = document.querySelector('table.divisi').rows.item(i+1).cells.item(2).innerHTML
             let kode = document.querySelector('table.divisi').rows.item(i+1).cells.item(3).innerHTML
             let nama = document.querySelector('table.divisi').rows.item(i+1).cells.item(4).innerHTML
-            // console.log(id,kode,nama)
+            // console.log(group)
+            let selectedOpt = $option.find(item => item.text == group)
+            selectedOpt.selected = true
+
             let str = document.querySelector('#staticDivisiLabel')
                     // console.log(str.html)
-            str.innerHTML = 'Edit Grup Divisi'
+            str.innerHTML = '<?=lang('Files.Edit'),' ',lang('Files.Divisi')?>'
             document.getElementById("id").value = id;
             document.getElementById("kode").value = kode;
             document.getElementById("namadivisi").value = nama;
@@ -249,13 +257,13 @@
         deleteButton[i].addEventListener("click", function() {
         let kode = document.querySelector('table.divisi').rows.item(i+1).cells.item(2).innerHTML
         Swal.fire({
-            title: "Apakah Anda Yakin Menghapus Data ?",
+            title: "<?=lang('Files.Deleted_Confirm')?>",
             text: "",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#2ab57d",
             cancelButtonColor: "#fd625e",
-            confirmButtonText: "Ya, Hapus Data!"
+            confirmButtonText: "<?=lang('Files.Yes')?>"
         }).then(function (result) {
             const reqbody = {'kode':kode}
             if (result.value) {

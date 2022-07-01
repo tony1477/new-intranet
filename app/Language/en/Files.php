@@ -119,8 +119,37 @@ return [
     "Extra_pages" => "Extra pages",
     "Utility" => "Utility",
 
-    // Custom
-    "Group_Divisi" => "Group Divisi",
+    // Grup Divisi
+    "Group_Divisi" => "Division Group",
+    "Group_Name" => "Group Name",    
+    "Divisi_Group" => "Group Division",
+    "Code_GroupDivisi" => "Division Group Code",
+    "Name_GroupDivisi" => "Division Group Name",
+
+    // Divisi
+    "Code_Divisi" => "Division Code",
+    "Name_Divisi" => "Division Name",
+    "Divisi" => "Division",
+    
+    // Common
     "Intranet" => "Intranet",
-    "Add_Divisi_Group" => "Add Group Division",
+    "Action" => "Action",
+    "Id" => "ID",
+    "User_Created" => "User Created",
+    "User_Modified" => "User Modified",
+    "Add" => "Add",
+    "Edit" => "Edit",
+    "Close" => "Close",
+    "Save" => "Save",
+    "Deleted_Confirm" => "Are you sure want delete this data ?",
+    "Yes" => "Yes",
+
+    // Menu
+    "group-divisi" => 'Division Group',
+    "divisi" => "Division",
+    "department" => "Department",
+    "jabatan" => "Position",
+    "ruangan-meeting" => "List Room",
+    "jadwal-meeting" => "Meeting Schedule",
+
 ];

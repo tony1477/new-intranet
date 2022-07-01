@@ -42,64 +42,66 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><?= lang('Files.Group_Divisi') ?></h4>
+                                <h4 class="card-title">Department</h4>
                             </div>
                             <div class="card-body">
 
-                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 divisiGroup">
+                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 department">
                                     <thead>
                                         <tr>
-                                            <th><?= lang('Files.Action')?></th>
-                                            <th><?= lang('Files.Id')?></th>
-                                            <th><?= lang('Files.Code_GroupDivisi')?></th>
-                                            <th><?= lang('Files.Name_GroupDivisi')?></th>
-                                            <th><?= lang('Files.User_Created')?></th>
-                                            <th><?= lang('Files.User_Modified')?></th>
+                                            <th>Aksi</th>
+                                            <th>ID</th>
+                                            <th>Kode Divisi</th>
+                                            <th>Kode Department</th>
+                                            <th>Nama Department</th>
+                                            <th>User Created</th>
+                                            <th>User Modified</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($groupdivisi as $list):?>
+                                        <?php foreach($department as $list):?>
                                             <tr>
                                                 <td>
-                                                    <a class="btn btn-soft-secondary waves-effect waves-light btn-sm editDivisiGroup" title="Edit" data-bs-toggle="modal" data-bs-target="#editGroup"><i class="fas fa-pencil-alt" title="Edit"></i></a>
-                                                    <a class="btn btn-soft-danger waves-effect waves-light btn-sm deleteDivisiGroup" title="Hapus" ><i class="fas fa-trash-alt" title="Hapus"></i></a>
+                                                    <a class="btn btn-soft-secondary waves-effect waves-light btn-sm editdepartment" title="Edit" data-bs-toggle="modal" data-bs-target="#editDepartment"><i class="fas fa-pencil-alt" title="Edit"></i></a>
+                                                    <a class="btn btn-soft-danger waves-effect waves-light btn-sm deletedepartment" title="Hapus" ><i class="fas fa-trash-alt" title="Hapus"></i></a>
                                                 </td>
-                                                <td><?=$list->iddivisigroup?></td>
-                                                <td><?=$list->gdiv_kode?></td>
-                                                <td><?=$list->gdiv_nama?></td>
+                                                <td><?=$list->iddepartment?></td>
+                                                <td><?=$list->div_kode?></td>
+                                                <td><?=$list->dep_kode?></td>
+                                                <td><?=$list->dep_nama?></td>
                                                 <td><?=$list->user_c?></td>
                                                 <td><?=$list->user_m?></td>
                                             </tr>
                                         <?php endforeach;?>
                                     </tbody>
                                 </table>
-                                <div class="modal fade" id="editGroup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticdivisiGroupLabel" aria-hidden="true">
+                                <div class="modal fade" id="editDepartment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticdepartmentLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="staticdivisiGroupLabel"></h5>
+                                                <h5 class="modal-title" id="staticdepartmentLabel"></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form novalidate method="post" name="groupdivisi">
+                                                <form novalidate method="post" name="department">
                                                     <input type="hidden" />
-                                                    <div class="col-xl-8 col-md-8">
+                                                    <div class="col-xl-4 col-md-6">
                                                         <div class="form-group mb-3">
-                                                            <label><?= lang('Files.Code_GroupDivisi')?></label>
+                                                            <label>Kode Divisi</label>
                                                             <!-- <select name="kode" id="kode" class="form-select">
                                                                 <option value="">-</option>
-                                                                <?php //foreach($groupdivisi as $opt):?>
-                                                                    <option value="<?php //$opt->gdiv_kode?>"><?php //$opt->gdiv_kode?></option>
-                                                                <?php //endforeach;?>
+                                                                <?php foreach($department as $opt):?>
+                                                                    <option value="<?=$opt->iddivisi?>"><?=$opt->div_kode?></option>
+                                                                <?php endforeach;?>
                                                             <div class="pristine-error text-help">Kode Divisi Harus Diisi</div> 
                                                         </select> -->
                                                         <input type="hidden" name="id" id="id" class="form-control" required value="" />
                                                         <input type="text" name="kode" id="kode" class="form-control" required value="" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-xl-8 col-md-8">
+                                                    <div class="col-xl-4 col-md-6">
                                                         <div class="form-group mb-3">
-                                                            <label><?= lang('Files.Name_GroupDivisi')?></label>
+                                                            <label>Nama Divisi</label>
                                                             <input type="text" required data-pristine-required-message="Isikan Nama Divisi" class="form-control" value="" id="namadivisi" />
                                                         <!-- <div class="pristine-error text-help">Nama Divisi Harus Diisi</div> -->
                                                         </div>
@@ -107,8 +109,8 @@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal"><?=lang('Files.Close')?></button>
-                                                <button type="submit" class="btn btn-primary save"><?=lang('Files.Save')?></button>
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary save">Simpan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -166,12 +168,12 @@
             {
                 text: '<?= lang('Files.Add')?>',
                 action: function ( e, dt, node, config ) {
-                    let str = document.querySelector('#staticdivisiGroupLabel')
-                    str.innerHTML = '<?= lang('Files.Add'),' ',lang('Files.Divisi_Group')?>'
+                    let str = document.querySelector('#staticdepartmentLabel')
+                    str.innerHTML = '<?=  lang('Files.Add_Divisi_Department')  ?>'
                     document.getElementById("id").value = '';
                     document.getElementById("kode").value = '';
                     document.getElementById("namadivisi").value = '';
-                    $('#editGroup').modal('show')
+                    $('#editDepartment').modal('show')
                 }
             },
             'excel', 'pdf', 'colvis',
@@ -217,20 +219,20 @@
 
         return response.json()
     }
-    const editButton = document.querySelectorAll(".editDivisiGroup");
-    const deleteButton = document.querySelectorAll('.deleteDivisiGroup')
+    const editButton = document.querySelectorAll(".editdepartment");
+    const deleteButton = document.querySelectorAll('.deletedepartment')
     const saveButton = document.querySelector('.save');
     const selected = document.querySelectorAll("input#kode");
 
     for (let i = 0; i < editButton.length; i++) {
         editButton[i].addEventListener("click", function() {
-            let id = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(1).innerHTML
-            let kode = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(2).innerHTML
-            let nama = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(3).innerHTML
+            let id = document.querySelector('table.department').rows.item(i+1).cells.item(1).innerHTML
+            let kode = document.querySelector('table.department').rows.item(i+1).cells.item(2).innerHTML
+            let nama = document.querySelector('table.department').rows.item(i+1).cells.item(3).innerHTML
             // console.log(id,kode,nama)
-            let str = document.querySelector('#staticdivisiGroupLabel')
+            let str = document.querySelector('#staticdepartmentLabel')
                     // console.log(str.html)
-            str.innerHTML = '<?= lang('Files.Edit'),' ',lang('Files.Divisi_Group')?>'
+            str.innerHTML = 'Edit Grup Divisi'
             document.getElementById("id").value = id;
             document.getElementById("kode").value = kode;
             document.getElementById("namadivisi").value = nama;
@@ -239,7 +241,7 @@
 
     for(let i=0; i< deleteButton.length; i++) {
         deleteButton[i].addEventListener("click", function() {
-        let kode = document.querySelector('table.divisiGroup').rows.item(i+1).cells.item(2).innerHTML
+        let kode = document.querySelector('table.department').rows.item(i+1).cells.item(2).innerHTML
         Swal.fire({
             title: "Apakah Anda Yakin Menghapus Data ?",
             text: "",
@@ -270,14 +272,14 @@
     }
 
     saveButton.addEventListener("click", function(){
-        const id =  document.forms["groupdivisi"]["id"].value;
-        const kode =  document.forms["groupdivisi"]["kode"].value;
-        const nama =  document.forms["groupdivisi"]["namadivisi"].value;
+        const id =  document.forms["department"]["id"].value;
+        const kode =  document.forms["department"]["kode"].value;
+        const nama =  document.forms["department"]["namadivisi"].value;
         const data = [id, kode, nama]
         postData('<?=base_url()?>/group-divisi/post',{'data':data})
         .then(data => {
             // console.log(data)
-            if(data.code === 200) $('#editGroup').modal('hide'); Swal.fire("Success!", data.message, data.status);
+            if(data.code === 200) $('#editDepartment').modal('hide'); Swal.fire("Success!", data.message, data.status);
                     // table.ajax.reload()
                     // Swal.clickConfirm()
             setTimeout(() => location.reload(), 1500)
