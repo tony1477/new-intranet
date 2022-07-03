@@ -95,7 +95,7 @@ return [
     "Level_2_1" => "Level 2 1",
     "Level_2_2" => "Level 2 2",
     "Unlimited_Access" => "Unlimited Access",
-    "Upgrade_your_plan_from_a_Free_trial,_to_select_‘Business_Plan’" => "Upgrade your plan from a Free trial, to select 'Business Plan'",
+    "Upgrade_your_plan_from_a_Free_trial,_to_select_Business_Plan" => "Upgrade your plan from a Free trial, to select 'Business Plan'",
     "Upgrade_Now" => "Upgrade Now",
     "Search" => "Search...",
     "Notifications" => "Notifications",
@@ -105,7 +105,7 @@ return [
     "Your_order_is_placed" => "Your order is placed",
     "3_min_ago" => "3 min ago",
     "Your_item_is_shipped" => "Your item is shipped",
-    "If_several_languages_coalesce_the_grammar" => "If several languages ​​coalesce the grammar",
+    "If_several_languages_coalesce_the_grammar" => "If several languages coalesce the grammar",
     "Salena_Layfield" => "Salena Layfield",
     "As_a_skeptical_Cambridge_friend_of_mine_occidental" => "As a skeptical Cambridge friend of mine occidental",
     "1_hours_ago" => "1 hours ago",
@@ -119,11 +119,37 @@ return [
     "Extra_pages" => "Extra pages",
     "Utility" => "Utility",
 
-    // Custom
+    // Grup Divisi
     "Group_Divisi" => "Divisi Grup",
+    "Group_Name" => "Nama Group",
+    "Divisi_Group" => "Grup Divisi",
+    "Code_GroupDivisi" => "Kode Divisi Grup",
+    "Name_GroupDivisi" => "Nama Divisi Grup",
+    
+    // Divisi
+    "Code_Divisi" => "Kode Divisi",
+    "Name_Divisi" => "Nama Divisi",
     "Divisi" => "Divisi",
+
+    // Common
     "Intranet" => "Intranet",
-    "Add_Divisi_Group" => "Tambah Divisi Grup",
-    "Add_Divisi" => "Tambah Divisi ",
-    "Add" => "Tambah"
+    "Action" => "Aksi",
+    "Id" => "ID",
+    "User_Created" => "User Pembuat",
+    "User_Modified" => "User Ubah",
+    "Add" => "Tambah",
+    "Edit" => "Ubah",
+    "Close" => "Tutup",
+    "Save" => "Simpan",
+    "Deleted_Confirm" => "Apakah Anda yakin mau menghapus data ?",
+    "Yes" => "Ya",
+    
+    // Menu
+    "group-divisi" => 'Grup Divisi',
+    "divisi" => "Data Divisi",
+    "department" => "Departemen",
+    "jabatan" => "Jabatan",
+    "ruangan-meeting" => "Ruangan Meeting",
+    "jadwal-meeting" => "Jadwal Meeting",
+
 ];
