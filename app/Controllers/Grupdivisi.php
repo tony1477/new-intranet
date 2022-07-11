@@ -20,14 +20,69 @@ class Grupdivisi extends BaseController
         $menu = getMenu($user='Admin');
         $getgroupdivisi = getGroupDivisi();
         //$submenu = getSubmenu($moduleid=0);
-		$data = [
+		// $data = [
+		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
+		// 	'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
+		// 	'modules' => $menu,
+        //     'groupdivisi' => $getgroupdivisi,
+		// ];
+		
+		// return view('master/grupdivisi', $data);
+
+        $data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
 			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
 			'modules' => $menu,
-            'groupdivisi' => $getgroupdivisi,
+            'route' => 'group-divisi',
+            'menuname' => 'Divisi_Group',
+            'data' => $getgroupdivisi,
+            //'options' => array('option1' => $group),
+            'columns_hidden' => array('Action'),
+            'columns' => array('Action','Id','Code_GroupDivisi','Name_GroupDivisi','User_Created','User_Modified'),
+            'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
+            'forms' => [
+                # rule
+                # column_name => array(type,'name and id','class','style')
+                'iddivisigroup' => array('type'=>'hidden','idform'=>'id','field'=>'iddivisigroup'), 
+                // 'iddivisigroup' => array(
+                //     'label'=>'Name_GroupDivisi',
+                //     'type'=>'select',
+                //     'idform'=>'idgroup',
+                //     'form-class'=>'form-select',
+                //     'style' => 'col-md-8 col-xl-8',
+                //     'options' => array(
+                //         'list' => $group,
+                //         'id' => 'iddivisigroup',
+                //         'value' => 'gdiv_nama',
+                //     ),
+                // ),
+                'gdiv_kode' => array(
+                    'label'=>'Code_GroupDivisi',
+                    'field'=>'div_kode',
+                    'type'=>'text',
+                    'idform'=>'kode',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'gdiv_nama' => array(
+                    'label'=>'Name_GroupDivisi',
+                    'field'=>'gdiv_nama',
+                    'type'=>'text',
+                    'idform'=>'namadivisi',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                // 'gdiv_nama2' => array(
+                //     'label'=>'Name_Divisi',
+                //     'type'=>'text',
+                //     'idform'=>'namadivisi2',
+                //     'form-class'=>'form-control',
+                //     'style' => 'col-md-8 col-xl-8'
+                // ),
+            ]
 		];
 		
-		return view('master/grupdivisi', $data);
+		return view('master/m_view', $data);
     }
 
     public function delete()
@@ -40,8 +95,8 @@ class Grupdivisi extends BaseController
         );
         if($this->request->isAJAX()) {
             try {
-                $id = $this->request->getVar('kode');
-                $this->model->where('gdiv_kode',$id)->delete();
+                $id = $this->request->getVar('id');
+                $this->model->where('iddivisigroup',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
@@ -60,7 +115,7 @@ class Grupdivisi extends BaseController
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400
+                    'code' => 400,
                 );
             }
         }
@@ -79,19 +134,22 @@ class Grupdivisi extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $datas = $this->request->getVar('data');
+                if(is_object($datas)) {
+                    $datas = (array) $datas;
+                }
                 $data = [
-                    'gdiv_kode' => $datas[1],
-                    'gdiv_nama' => $datas[2],
+                    'gdiv_kode' => $datas['kode'],
+                    'gdiv_nama' => $datas['namadivisi'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
                 ];
-                if($datas[0]!=='') {
-                    $this->model->update($datas[0],$data);
+                if($datas['id']!=='') {
+                    $this->model->update($datas['id'],$data);
                     $message = 'Data berhasil di ubah';
                 }
                 
-                if($datas[0]==='') {
+                if($datas['id']==='') {
                     $newdata = [
                         // 'user_c' => $this->session->user_kode,
                         'tgl_c'=>date('Y-m-d'),
@@ -105,12 +163,11 @@ class Grupdivisi extends BaseController
                 $arr = array(
                     'status' => 'success',
                     'code' => 200,
-                    'message' => $message
                 );
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400
+                    'code' => 400,
                 );
             }
         }

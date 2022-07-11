@@ -120,7 +120,7 @@ return [
     "Utility" => "Utility",
 
     // Grup Divisi
-    "Group_Divisi" => "Division Group",
+    // "Group_Divisi" => "Division Group",
     "Group_Name" => "Group Name",    
     "Divisi_Group" => "Group Division",
     "Code_GroupDivisi" => "Division Group Code",
@@ -141,8 +141,13 @@ return [
     "Edit" => "Edit",
     "Close" => "Close",
     "Save" => "Save",
+    "Delete" => "Delete",
     "Deleted_Confirm" => "Are you sure want delete this data ?",
     "Yes" => "Yes",
+    "Save_Success" => "Data has been saved",
+    "Update_Success" => "Data has been updated",
+    "Delete_Success" => "Data has been deleted",
+    "Delete_Error" => "Wrong happen! Error when deleted",
 
     // Menu
     "group-divisi" => 'Division Group',

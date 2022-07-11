@@ -161,7 +161,9 @@ $routes->post('group-divisi/delete', 'Grupdivisi::delete');
 $routes->post('group-divisi/post', 'Grupdivisi::save');
 
 ## Divisi
-$routes->get('data-divisi', 'Divisi::index');
+$routes->get('divisi', 'Divisi::index');
+$routes->post('divisi/delete', 'Divisi::delete');
+$routes->post('divisi/post', 'Divisi::save');
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
 

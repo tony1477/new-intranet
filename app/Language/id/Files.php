@@ -141,8 +141,13 @@ return [
     "Edit" => "Ubah",
     "Close" => "Tutup",
     "Save" => "Simpan",
+    "Delete" => "Hapus",
     "Deleted_Confirm" => "Apakah Anda yakin mau menghapus data ?",
     "Yes" => "Ya",
+    "Save_Success" => "Data Berhasil di Simpan",
+    "Update_Success" => "Data Berhasil di Ubah",
+    "Delete_Success" => "Data Berhasil di Hapus",
+    "Delete_Error" => "Terjadi kesalahan saat menghapus data",
     
     // Menu
     "group-divisi" => 'Grup Divisi',
