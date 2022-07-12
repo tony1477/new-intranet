@@ -122,14 +122,45 @@ return [
     // Grup Divisi
     // "Group_Divisi" => "Division Group",
     "Group_Name" => "Group Name",    
-    "Divisi_Group" => "Group Division",
     "Code_GroupDivisi" => "Division Group Code",
-    "Name_GroupDivisi" => "Division Group Name",
+    "Name_GroupDivisi" => "Division Group Name (IDN)",
+    "Name_GroupDivisi2" => "Division Group Name (ENG)",
+    "Divisi_Group" => "Group Division",
 
     // Divisi
     "Code_Divisi" => "Division Code",
-    "Name_Divisi" => "Division Name",
+    "Name_Divisi" => "Division Name (IDN)",
+    "Name_Divisi2" => "Division Name (ENG)",
     "Divisi" => "Division",
+
+    // Department
+    "Code_Department" => "Department Code",
+    "Name_Department" => "Department Name (IDN)",
+    "Name_Department2" => "Department Name (ENG)",
+    "Department" => "Department",
+
+    // Structure Org
+    "Code_Structureorg" => "Structure Code",
+    "Name_Structureorg" => "Structure Org. Name (IDN)",
+    "Name_Structureorg2" => "Structure Org. Name (ENG)",
+    "Name_File" => "File Name",
+    "Cover" => "Cover",
+    "Publish" => "Publish",
+    "Status" => "Status",
+    "Cover2" => "Use Cover",
+    "Structure-Org" => "Organization Structure",
+
+    // Kategory
+    "Code_Category" => "Category Code",
+    "Name_Category" => "Category Name (IDN)",
+    "Name_Category2" => "Category Name (ENG)",
+    "Category" => "Category ",
+
+    // Position
+    "Code_Position" => "Position Code",
+    "Name_Position" => "Position Name(IDN)",
+    "Name_Position2" => "Position Name(ENG)",
+    "Position" => "Position",
     
     // Common
     "Intranet" => "Intranet",
@@ -148,6 +179,8 @@ return [
     "Update_Success" => "Data has been updated",
     "Delete_Success" => "Data has been deleted",
     "Delete_Error" => "Wrong happen! Error when deleted",
+    "(Eng)" => "(ENG)",
+    "(Idn)" => "(IDN)",
 
     // Menu
     "group-divisi" => 'Division Group',
@@ -156,5 +189,8 @@ return [
     "jabatan" => "Position",
     "ruangan-meeting" => "List Room",
     "jadwal-meeting" => "Meeting Schedule",
+    "struktur-org" => "Organisation Structure",
+    "kategory" => "Category",
+    "dokumen" => "Document",
 
 ];

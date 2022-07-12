@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DivisiModel extends Model
+class PositionModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'tbl_ifmdivisi';
-    protected $primaryKey       = 'iddivisi';
+    protected $table            = 'tbl_ifmjabatan';
+    protected $primaryKey       = 'idjabatan';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['div_kode','div_nama','div_nama2','gdiv_kode','iddivisigroup','user_c','user_m','time_c','time_m','tgl_c','tgl_m'];
+    protected $allowedFields    = ['jab_kode','jab_nama','jab_nama2','user_c','user_m','time_c','time_m','tgl_c','tgl_m'];
 
     // Dates
     protected $useTimestamps = false;

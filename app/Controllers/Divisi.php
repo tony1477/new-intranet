@@ -29,7 +29,7 @@ class Divisi extends BaseController
             'data' => $divisi,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Name_GroupDivisi','Code_Divisi','Name_Divisi','User_Created','User_Modified'),
+            'columns' => array('Action','Id','Name_GroupDivisi','Code_Divisi','Name_Divisi','Name_Divisi2','User_Created','User_Modified'),
             'crudScript' => view('partials/script/divisi',['menuname' => 'Divisi']),
             'forms' => [
                 # rule
@@ -64,6 +64,14 @@ class Divisi extends BaseController
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
+                'div_nama2' => array(
+                    'label'=>'Name_Divisi2',
+                    'field'=>'div_nama2',
+                    'type'=>'text',
+                    'idform'=>'namadivisi2',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
             ]
 		];
 		
@@ -80,7 +88,7 @@ class Divisi extends BaseController
         );
         if($this->request->isAJAX()) {
             try {
-                $id = $this->request->getVar('iddivisi');
+                $id = $this->request->getVar('id');
                 $this->model->where('iddivisi',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
@@ -119,20 +127,24 @@ class Divisi extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $datas = $this->request->getVar('data');
+                if(is_object($datas)) {
+                    $datas = (array) $datas;
+                }
                 $data = [
-                    'iddivisigroup' => $datas[1],
-                    'div_kode' => $datas[2],
-                    'div_nama' => $datas[3],
+                    'iddivisigroup' => $datas['idgroup'],
+                    'div_kode' => $datas['kode'],
+                    'div_nama' => $datas['namadivisi'],
+                    'div_nama2' => $datas['namadivisi2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
                 ];
-                if($datas[0]!=='') {
-                    $this->model->update($datas[0],$data);
+                if($datas['id']!=='') {
+                    $this->model->update($datas['id'],$data);
                     $message = lang('Files.Update_Success');
                 }
                 
-                if($datas[0]==='') {
+                if($datas['id']==='') {
                     $newdata = [
                         // 'user_c' => $this->session->user_kode,
                         'tgl_c'=>date('Y-m-d'),

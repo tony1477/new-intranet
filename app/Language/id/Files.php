@@ -122,14 +122,45 @@ return [
     // Grup Divisi
     "Group_Divisi" => "Divisi Grup",
     "Group_Name" => "Nama Group",
-    "Divisi_Group" => "Grup Divisi",
     "Code_GroupDivisi" => "Kode Divisi Grup",
-    "Name_GroupDivisi" => "Nama Divisi Grup",
+    "Name_GroupDivisi" => "Nama Divisi Grup (IDN)",
+    "Name_GroupDivisi2" => "Nama Divisi Grup (ENG)",
+    "Divisi_Group" => "Grup Divisi",
     
     // Divisi
     "Code_Divisi" => "Kode Divisi",
-    "Name_Divisi" => "Nama Divisi",
+    "Name_Divisi" => "Nama Divisi (IDN)",
+    "Name_Divisi2" => "Nama Divisi (ENG)",
     "Divisi" => "Divisi",
+
+    // Department
+    "Code_Department" => "Kode Departemen",
+    "Name_Department" => "Nama Departemen (IDN)",
+    "Name_Department2" => "Nama Departemen (ENG)",
+    "Department" => "Departemen",
+
+    // Structure Org
+    "Code_Structureorg" => "Kode Struktur",
+    "Name_Structureorg" => "Nama Struktur (IDN)",
+    "Name_Structureorg2" => "Nama Struktur (ENG)",
+    "Name_File" => "Nama File",
+    "Cover" => "Cover",
+    "Publish" => "Publish",
+    "Status" => "Status",
+    "Cover2" => "Gunakan Cover",
+    "Structure-Org" => "Struktur Organisasi",
+
+    // Kategory
+    "Code_Category" => "Kode Kategory",
+    "Name_Category" => "Nama Kategory (IDN)",
+    "Name_Category2" => "Nama Kategory (ENG)",
+    "Category" => "Katagory",
+
+    // Position
+    "Code_Position" => "Kode Jabatan",
+    "Name_Position" => "Nama Jabatan (IDN)",
+    "Name_Position2" => "Nama Jabatan(ENG)",
+    "Position" => "Jabatan",
 
     // Common
     "Intranet" => "Intranet",
@@ -148,6 +179,8 @@ return [
     "Update_Success" => "Data Berhasil di Ubah",
     "Delete_Success" => "Data Berhasil di Hapus",
     "Delete_Error" => "Terjadi kesalahan saat menghapus data",
+    "(Eng)" => "(ENG)",
+    "(Idn)" => "(IDN)",
     
     // Menu
     "group-divisi" => 'Grup Divisi',
@@ -156,5 +189,8 @@ return [
     "jabatan" => "Jabatan",
     "ruangan-meeting" => "Ruangan Meeting",
     "jadwal-meeting" => "Jadwal Meeting",
+    "struktur-org" => "Sturktur Organisasi",
+    "kategory" => "Kategori",
+    "dokumen" => "Dokumen",
 
 ];

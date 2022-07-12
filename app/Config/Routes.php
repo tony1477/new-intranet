@@ -164,6 +164,33 @@ $routes->post('group-divisi/post', 'Grupdivisi::save');
 $routes->get('divisi', 'Divisi::index');
 $routes->post('divisi/delete', 'Divisi::delete');
 $routes->post('divisi/post', 'Divisi::save');
+
+## Department
+$routes->get('department', 'Department::index');
+$routes->post('department/delete', 'Department::delete');
+$routes->post('department/post', 'Department::save');
+
+## Jabatan
+$routes->get('department', 'Department::index');
+$routes->post('department/delete', 'Department::delete');
+$routes->post('department/post', 'Department::save');
+
+
+## Struktur
+$routes->get('struktur-organisasi', 'Strukturorg::index');
+$routes->post('struktur-organisasi/delete', 'Strukturorg::delete');
+$routes->post('struktur-organisasi/post', 'Strukturorg::save');
+
+## Kategory
+$routes->get('kategory', 'Kategory::index');
+$routes->post('kategory/delete', 'Kategory::delete');
+$routes->post('kategory/post', 'Kategory::save');
+
+## Position
+$routes->get('jabatan', 'Position::index');
+$routes->post('jabatan/delete', 'Position::delete');
+$routes->post('jabatan/post', 'Position::save');
+
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
 

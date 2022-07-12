@@ -4,12 +4,12 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Department extends BaseController
+class Kategory extends BaseController
 {
     public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\DepartmentModel();
+        $this->model = new \App\Models\KategoryModel();
     }
 
     public function index()
@@ -17,58 +17,65 @@ class Department extends BaseController
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $department = getDepartment();
-        $divisi = getDivisi();
+        $kategory = getKategory();
         //$submenu = getSubmenu($moduleid=0);
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Department']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Department']),
+		// $data = [
+		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
+		// 	'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
+		// 	'modules' => $menu,
+        //     'groupdivisi' => $getgroupdivisi,
+		// ];
+		
+		// return view('master/grupdivisi', $data);
+
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Category']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Category']),
 			'modules' => $menu,
-            'route'=>'department',
-            'menuname' => 'Department',
-            'data' => $department,
+            'route' => 'kategory',
+            'menuname' => 'Category',
+            'data' => $kategory,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Name_Divisi','Code_Department','Name_Department','Name_Department2','User_Created','User_Modified'),
-            //'crudScript' => view('partials/script/department',['menuname' => 'Department']),
+            'columns' => array('Action','Id','Code_Category','Name_Category','Name_Category2'),
+            //'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'iddepartment' => array('type'=>'hidden','idform'=>'id','field'=>'iddepartment'), 
-                'iddivisi' => array(
-                    'label'=>'Name_Divisi',
-                    'field'=>'iddivisi',
-                    'type'=>'select',
-                    'idform'=>'id_divisi',
-                    'form-class'=>'form-select',
-                    'style' => 'col-md-8 col-xl-8',
-                    'options' => array(
-                        'list' => $divisi,
-                        'id' => 'Id',
-                        'value' => 'Name_Divisi',
-                    ),
-                ),
-                'dep_kode' => array(
-                    'label'=>'Code_Department',
-                    'field'=>'dep_kode',
+                'idkategory' => array('type'=>'hidden','idform'=>'id','field'=>'idkategory'), 
+                // 'iddivisigroup' => array(
+                //     'label'=>'Name_GroupDivisi',
+                //     'type'=>'select',
+                //     'idform'=>'idgroup',
+                //     'form-class'=>'form-select',
+                //     'style' => 'col-md-8 col-xl-8',
+                //     'options' => array(
+                //         'list' => $group,
+                //         'id' => 'iddivisigroup',
+                //         'value' => 'gdiv_nama',
+                //     ),
+                // ),
+                'kat_kode' => array(
+                    'label'=>'Code_Category',
+                    'field'=>'kat_kode',
                     'type'=>'text',
                     'idform'=>'kode',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'dep_nama' => array(
-                    'label'=>'Name_Department',
-                    'field'=>'dep_nama',
+                'kat_nama' => array(
+                    'label'=>'Name_Category',
+                    'field'=>'kat_nama',
                     'type'=>'text',
-                    'idform'=>'namadepartment',
+                    'idform'=>'namakategory',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'dep_nama2' => array(
-                    'label'=>'Name_Department2',
-                    'field'=>'dep_nama2',
+                'kat_nama2' => array(
+                    'label'=>'Name_Category2',
+                    'field'=>'kat_nama2',
                     'type'=>'text',
-                    'idform'=>'namadepartment2',
+                    'idform'=>'namakategory2',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
@@ -89,12 +96,12 @@ class Department extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('iddepartment',$id)->delete();
+                $this->model->where('idkategory',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
                         'code' => 200,
-                        'message' => lang('Files.Delete_Error'),
+                        'message' => 'Terjadi kesalahan dalam menghapus data',
                         // 'data' => $this->model->findAll()
                     );
                     return json_encode($arr);
@@ -102,13 +109,13 @@ class Department extends BaseController
                 $arr = array(
                     'status' => 'success',
                     'code' => 200,
-                    'message' => lang('Files.Delete_Success'),
+                    'message' => 'Data Berhasil di Hapus',
                     // 'data' =>  $this->model->findAll()
                 );
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400
+                    'code' => 400,
                 );
             }
         }
@@ -131,10 +138,9 @@ class Department extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'iddivisi' => $datas['id_divisi'],
-                    'dep_kode' => $datas['kode'],
-                    'dep_nama' => $datas['namadepartment'],
-                    'dep_nama2' => $datas['namadepartment2'],
+                    'gdiv_kode' => $datas['kode'],
+                    'kat_nama' => $datas['namakategory'],
+                    'kat_nama2' => $datas['namakategory2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
@@ -163,7 +169,7 @@ class Department extends BaseController
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400
+                    'code' => 400,
                 );
             }
         }

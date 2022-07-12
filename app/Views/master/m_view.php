@@ -37,7 +37,7 @@
                             </div>
                             <div class="card-body">
 
-                                <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 <?=$menuname?>">
+                                <table id="datatable-buttons" class="table table-bordered dt-responsive  w-100 <?=$menuname?>">
                                     <thead>
                                         <?php $rows = array_diff($columns,$columns_hidden);?>
                                         <tr>
@@ -164,7 +164,7 @@
                 text: '<?= lang('Files.Add')?>',
                 action: function ( e, dt, node, config ) {
                     let str = document.querySelector('#static<?=$menuname?>Label')
-                    str.innerHTML = '<?=  lang('Files.Add'),' ',lang('Files.Divisi')  ?>'
+                    str.innerHTML = '<?=  lang('Files.Add'),' ',lang('Files.'.$menuname)  ?>'
                     <?php foreach($forms as $form): ?>
                         document.getElementById("<?=$form['idform']?>").value = '';
                     <?php endforeach;?>
@@ -221,40 +221,43 @@
     // const selected = document.querySelectorAll("input#kode");
     // const $select = document.querySelector('#idgroup')
     // const $option = Array.from($select.options)
-
+    let ix; let offset=10;
     for (let i = 0; i < editButton.length; i++) {
-        // console.log(editButton[i])
         editButton[i].addEventListener("click", function() {
             
             // let id = document.querySelector('table.<?=$menuname?>').rows.item(i+1).cells.item(1).innerHTML
             // let group = document.querySelector('table.<?=$menuname?>').rows.item(i+1).cells.item(2).innerHTML
             // let kode = document.querySelector('table.<?=$menuname?>').rows.item(i+1).cells.item(3).innerHTML
             // let nama = document.querySelector('table.<?=$menuname?>').rows.item(i+1).cells.item(4).innerHTML
-            let n=1;
+            ix = Math.floor(i/offset);
+            let j = i - (offset*ix);
+            let n=1; 
+    
+
             <?php foreach($forms as $form): ?>
-                let <?=$form['idform']?> = document.querySelector('table.<?=$menuname?>').rows.item(i+1).cells.item(n).innerHTML;
+                let <?=$form['idform']?> = document.querySelector('table.<?=$menuname?>').rows.item(j+1).cells.item(n).innerText;
+
 
                 <?php if($form['type']=='select') { ?>
                     let select<?=$form['idform']?> = document.querySelector('#<?=$form['idform']?>');
                     let option<?=$form['idform']?> = Array.from(select<?=$form['idform']?>.options);
                     let selectedOpt<?=$form['idform']?> = option<?=$form['idform']?>.find(item => item.text == <?=$form['idform']?>);
                     selectedOpt<?=$form['idform']?>.selected = true;
-
+                    
                     // console.log(selectedOpt<?=$form['idform']?>)    
-                <?php } ?>
+                    <?php } ?>
                 n++;
             <?php endforeach;?>
-
-            // let selectedOpt = $option.find(item => item.text == idgroup)
-            // selectedOpt.selected = true
-            console.log(idgroup)
 
             let str = document.querySelector('#static<?=$menuname?>Label')
                     // console.log(str.html)
             str.innerHTML = '<?=lang('Files.Edit'),' ',lang('Files.'.$menuname)?>'
-            <?php foreach($forms as $form):?>
-                document.getElementById("<?=$form['idform']?>").value = <?=$form['idform']?>;
+            <?php foreach($forms as $form) :
+                if($form['type']!='select') { ?>
+                    document.getElementById("<?=$form['idform']?>").value = <?=$form['idform']?>;
+                <?php } ?>
             <?php endforeach;?>
+            ix++;
         });
     }
 
@@ -292,7 +295,6 @@
     }
 
     saveButton.addEventListener("click", function(){
-        // console.log('click')
         const data = {}
         <?php foreach($forms as $form): ?>
             let <?=$form['field']?> = <?=$form['idform']?>;
@@ -312,7 +314,7 @@
             }
             // table.ajax.reload()
             // Swal.clickConfirm()
-            setTimeout(() => location.reload(), 1500)
+            //setTimeout(() => location.reload(), 1500)
         })
     })
 </script>

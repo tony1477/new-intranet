@@ -7,7 +7,7 @@ function format_rupiah($angka){
 function getMenu($user) {
   // $user = $_SESSION['users'];
   $db = db_connect();
-  return $result = $db->query("select * from module")->getResult();
+  return $result = $db->query("select * from module order by urutan asc")->getResult();
 }
 
 function getSubmenu($moduleid) {

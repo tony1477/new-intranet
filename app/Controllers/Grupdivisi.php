@@ -38,7 +38,7 @@ class Grupdivisi extends BaseController
             'data' => $getgroupdivisi,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Code_GroupDivisi','Name_GroupDivisi','User_Created','User_Modified'),
+            'columns' => array('Action','Id','Code_GroupDivisi','Name_GroupDivisi','Name_GroupDivisi2','User_Created','User_Modified'),
             'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
             'forms' => [
                 # rule
@@ -68,17 +68,18 @@ class Grupdivisi extends BaseController
                     'label'=>'Name_GroupDivisi',
                     'field'=>'gdiv_nama',
                     'type'=>'text',
-                    'idform'=>'namadivisi',
+                    'idform'=>'namagroup',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                // 'gdiv_nama2' => array(
-                //     'label'=>'Name_Divisi',
-                //     'type'=>'text',
-                //     'idform'=>'namadivisi2',
-                //     'form-class'=>'form-control',
-                //     'style' => 'col-md-8 col-xl-8'
-                // ),
+                'gdiv_nama2' => array(
+                    'label'=>'Name_GroupDivisi2',
+                    'field'=>'gdiv_nama2',
+                    'type'=>'text',
+                    'idform'=>'namagroup2',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
             ]
 		];
 		
@@ -139,14 +140,15 @@ class Grupdivisi extends BaseController
                 }
                 $data = [
                     'gdiv_kode' => $datas['kode'],
-                    'gdiv_nama' => $datas['namadivisi'],
+                    'gdiv_nama' => $datas['namagroup'],
+                    'gdiv_nama2' => $datas['namagroup2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
                 ];
                 if($datas['id']!=='') {
                     $this->model->update($datas['id'],$data);
-                    $message = 'Data berhasil di ubah';
+                    $message = lang('Files.Update_Success');
                 }
                 
                 if($datas['id']==='') {
@@ -157,12 +159,13 @@ class Grupdivisi extends BaseController
                     ];
                     $data = array_merge($data,$newdata);
                     $this->model->insert($data);
-                    $message = 'Data berhasil di tambah';
+                    $message = lang('Files.Save_Success');
                 }
                 
                 $arr = array(
                     'status' => 'success',
                     'code' => 200,
+                    'message' => $message
                 );
             }catch (\Exception $e) {
                 $arr = array(

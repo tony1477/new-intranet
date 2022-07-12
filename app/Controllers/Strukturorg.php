@@ -4,71 +4,111 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Department extends BaseController
+class Strukturorg extends BaseController
 {
-    public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\DepartmentModel();
+        $this->model = new \App\Models\StrukturorgModel();
     }
-
+    
     public function index()
     {
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $department = getDepartment();
-        $divisi = getDivisi();
+        $structure = getStrukturOrg();
+        $group = getDepartment();
         //$submenu = getSubmenu($moduleid=0);
+        
 		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Department']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Department']),
+			'title_meta' => view('partials/title-meta', ['title' => 'Structure-Org']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Structure-Org']),
 			'modules' => $menu,
-            'route'=>'department',
-            'menuname' => 'Department',
-            'data' => $department,
+            'route'=>'struktur-organisasi',
+            'menuname' => 'Structure-Org',
+            'data' => $structure,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Name_Divisi','Code_Department','Name_Department','Name_Department2','User_Created','User_Modified'),
-            //'crudScript' => view('partials/script/department',['menuname' => 'Department']),
+            'columns' => array('Action','Id','Name_Department','Code_Structureorg','Name_Structureorg','Name_Structureorg2','Name_File','Cover','Publish','Status','Cover2'),
+            //'crudScript' => view('partials/script/divisi',['menuname' => 'Divisi']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'iddepartment' => array('type'=>'hidden','idform'=>'id','field'=>'iddepartment'), 
-                'iddivisi' => array(
-                    'label'=>'Name_Divisi',
-                    'field'=>'iddivisi',
+                'idstrukturorg' => array('type'=>'hidden','idform'=>'id','field'=>'iddivisi'), 
+                'iddepartment' => array(
+                    'label'=>'Name_Department',
+                    'field'=>'iddepartment',
                     'type'=>'select',
-                    'idform'=>'id_divisi',
+                    'idform'=>'idgroup',
                     'form-class'=>'form-select',
                     'style' => 'col-md-8 col-xl-8',
                     'options' => array(
-                        'list' => $divisi,
+                        'list' => $group,
                         'id' => 'Id',
-                        'value' => 'Name_Divisi',
+                        'value' => 'Name_Department',
                     ),
                 ),
-                'dep_kode' => array(
-                    'label'=>'Code_Department',
-                    'field'=>'dep_kode',
+                'stg_kode' => array(
+                    'label'=>'Code_Structureorg',
+                    'field'=>'stg_kode',
                     'type'=>'text',
                     'idform'=>'kode',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'dep_nama' => array(
-                    'label'=>'Name_Department',
-                    'field'=>'dep_nama',
+                'stg_nama' => array(
+                    'label'=>'Name_Structureorg',
+                    'field'=>'stg_nama',
                     'type'=>'text',
-                    'idform'=>'namadepartment',
+                    'idform'=>'namastg',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'dep_nama2' => array(
-                    'label'=>'Name_Department2',
-                    'field'=>'dep_nama2',
+                'stg_nama2' => array(
+                    'label'=>'Name_Structureorg2',
+                    'field'=>'stg_nama2',
                     'type'=>'text',
-                    'idform'=>'namadepartment2',
+                    'idform'=>'namastg2',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_nmfile' => array(
+                    'label'=>'Name_File',
+                    'field'=>'stg_file',
+                    'type'=>'text',
+                    'idform'=>'stgfile',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_cover' => array(
+                    'label'=>'Cover',
+                    'field'=>'stg_cover',
+                    'type'=>'text',
+                    'idform'=>'stgcover',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_publish' => array(
+                    'label'=>'Publish',
+                    'field'=>'stg_publish',
+                    'type'=>'text',
+                    'idform'=>'stgpublish',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_aktif' => array(
+                    'label'=>'Status',
+                    'field'=>'stg_aktif',
+                    'type'=>'text',
+                    'idform'=>'stgstatus',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_default' => array(
+                    'label'=>'Cover2',
+                    'field'=>'stg_default',
+                    'type'=>'text',
+                    'idform'=>'stgcover2',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
@@ -89,7 +129,7 @@ class Department extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('iddepartment',$id)->delete();
+                $this->model->where('iddivisi',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
@@ -131,10 +171,10 @@ class Department extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'iddivisi' => $datas['id_divisi'],
-                    'dep_kode' => $datas['kode'],
-                    'dep_nama' => $datas['namadepartment'],
-                    'dep_nama2' => $datas['namadepartment2'],
+                    'iddivisigroup' => $datas['idgroup'],
+                    'div_kode' => $datas['kode'],
+                    'div_nama' => $datas['namadivisi'],
+                    'div_nama2' => $datas['namadivisi2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
