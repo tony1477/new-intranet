@@ -37,3 +37,16 @@ function getPosition() {
     return $db->query("select idjabatan as Id, jab_kode as Code_Position, jab_nama as Name_Position, jab_nama2 as Name_Position2
     from tbl_ifmjabatan a")->getResult();
 }
+
+function getGroupUser() {
+    $db = db_connect();
+    return $db->query("select idgroupuser as Id, guser_kode as Code_GroupUser, guser_nama as Name_GroupUser, guser_nama2 as Name_GroupUser2
+    from tbl_ifmusergroup a")->getResult();
+}
+
+function getUser() {
+    $db = db_connect();
+    return $db->query("select a.iduser as Id, user_kode as Code_User, user_nama as Name_User, user_pwd as Pwd_User, user_email as Email_User, if(user_blokir='Tidak','NO','YES') 
+    as Blokir_User, user_fhoto as Photo_User
+    from tbl_ifmuser a")->getResult();
+}

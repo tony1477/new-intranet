@@ -161,6 +161,22 @@ return [
     "Name_Position" => "Position Name(IDN)",
     "Name_Position2" => "Position Name(ENG)",
     "Position" => "Position",
+
+    // Group User
+    "Code_GroupUser" => "User Group Code",
+    "Name_GroupUser" => "User Group Name (IND)",
+    "Name_GroupUser2" => "User Group Name (ENG)",
+    "Group_User" => "User Group",
+
+    // User
+    "Code_User" => "User Code",
+    "Name_User" => "User Name",
+    "Pwd_User" => "Password",
+    "Email_User" => "Email Address",
+    "Status_User" => "Status",
+    "Blokir_User" => "Suspend?",
+    "Photo_User" => "Photo Profile",
+    "User" => "User",
     
     // Common
     "Intranet" => "Intranet",
@@ -175,6 +191,7 @@ return [
     "Delete" => "Delete",
     "Deleted_Confirm" => "Are you sure want delete this data ?",
     "Yes" => "Yes",
+    "No" => "No",
     "Save_Success" => "Data has been saved",
     "Update_Success" => "Data has been updated",
     "Delete_Success" => "Data has been deleted",
@@ -192,5 +209,7 @@ return [
     "struktur-org" => "Organisation Structure",
     "kategory" => "Category",
     "dokumen" => "Document",
+    "group-user" => "User Group",
+    "users" => "Users",
 
 ];

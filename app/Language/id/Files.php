@@ -162,6 +162,22 @@ return [
     "Name_Position2" => "Nama Jabatan(ENG)",
     "Position" => "Jabatan",
 
+    // Group User
+    "Code_GroupUser" => "Kode Grup Pengguna",
+    "Name_GroupUser" => "Nama Grup Pengguna (IDN)",
+    "Name_GroupUser2" => "Nama Grup Pengguna (ENG)",
+    "Group_User" => "Grup Pengguna",
+
+    // User
+    "Code_User" => "Kode Pengguna",
+    "Name_User" => "Nama Pengguna",
+    "Pwd_User" => "Kata Sandi",
+    "Email_User" => "Alamat Surel",
+    "Status_User" => "Status",
+    "Blokir_User" => "Blokir?",
+    "Photo_User" => "Foto",
+    "User" => "Pengguna",
+
     // Common
     "Intranet" => "Intranet",
     "Action" => "Aksi",
@@ -175,6 +191,7 @@ return [
     "Delete" => "Hapus",
     "Deleted_Confirm" => "Apakah Anda yakin mau menghapus data ?",
     "Yes" => "Ya",
+    "No" => "Tidak",
     "Save_Success" => "Data Berhasil di Simpan",
     "Update_Success" => "Data Berhasil di Ubah",
     "Delete_Success" => "Data Berhasil di Hapus",
@@ -192,5 +209,8 @@ return [
     "struktur-org" => "Sturktur Organisasi",
     "kategory" => "Kategori",
     "dokumen" => "Dokumen",
+    "group-user" => "Grup Pengguna",
+    "users" => "Pengguna",
+    
 
 ];

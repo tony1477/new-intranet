@@ -191,6 +191,20 @@ $routes->get('jabatan', 'Position::index');
 $routes->post('jabatan/delete', 'Position::delete');
 $routes->post('jabatan/post', 'Position::save');
 
+## GroupUser
+$routes->get('group-user', 'GroupUser::index');
+$routes->post('group-user/delete', 'GroupUser::delete');
+$routes->post('group-user/post', 'GroupUser::save');
+
+## Position
+$routes->get('users', 'User::index');
+$routes->post('users/delete', 'User::delete');
+$routes->post('users/post', 'User::save');
+
+## Meeting Room
+$routes->get('room-meeting','MeetingRoom::index');
+$routes->get('room-meeting/detail/:any','MeetingRoom::detail');
+
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
 

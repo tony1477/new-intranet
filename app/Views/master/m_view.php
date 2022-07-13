@@ -55,7 +55,10 @@
                                                 </td>
                                                
                                                 <?php foreach($rows as $row):?>
-                                                <td><?=$list->$row?></td>
+                                                <td><?php if(isset($mark_column) && in_array($row,$mark_column)) {
+                                                    echo '*****';
+                                                }
+                                                else {echo $list->$row; }?></td>
                                                 <?php endforeach;?>
                                             </tr>
                                         <?php endforeach;?>
@@ -96,6 +99,36 @@
                                                         <div class="form-group mb-3">
                                                             <label><?=lang('Files.'.$form['label'])?></label>
                                                         <input type="text" name="<?=$form['idform']?>" id="<?=$form['idform']?>" class="<?=$form['form-class']?>" required value="" />
+                                                        </div>
+                                                    </div>
+                                                    <?php }
+                                                    if($form['type']=='password') { ?>
+                                                        <div class="<?=$form['style']?>">
+                                                            <div class="form-group mb-3">
+                                                                <label><?=lang('Files.'.$form['label'])?></label>
+                                                            <input type="password" name="<?=$form['idform']?>" id="<?=$form['idform']?>" class="<?=$form['form-class']?>" required value="" />
+                                                            </div>
+                                                        </div>
+                                                        <?php }
+                                                    if($form['type']=='email') { ?>
+                                                        <div class="<?=$form['style']?>">
+                                                            <div class="form-group mb-3">
+                                                                <label><?=lang('Files.'.$form['label'])?></label>
+                                                            <input type="email" name="<?=$form['idform']?>" id="<?=$form['idform']?>" class="<?=$form['form-class']?>" required value="" />
+                                                            </div>
+                                                        </div>
+                                                        <?php }
+                                                    if($form['type'] == 'option') { ?>
+                                                    <div class="<?=$form['style']?>">
+                                                        <div class="form-group mb-3">
+                                                            <label><?=lang('Files.'.$form['label'])?></label>
+                                                            <select name="<?=$form['idform']?>" id="<?=$form['idform']?>" class="<?=$form['form-class']?>">
+                                                                <option value="">-</option>
+                                                                <?php foreach($form['value'] as $key => $value):?>
+                                                                  <option value="<?=$key?>"><?=$value?></option>
+                                                                <?php endforeach;?>
+                                                            <!-- <div class="pristine-error text-help">Kode Divisi Harus Diisi</div>  -->
+                                                        </select>
                                                         </div>
                                                     </div>
                                                     <?php }
@@ -238,13 +271,13 @@
                 let <?=$form['idform']?> = document.querySelector('table.<?=$menuname?>').rows.item(j+1).cells.item(n).innerText;
 
 
-                <?php if($form['type']=='select') { ?>
+                <?php if($form['type']=='select' ) { ?>
                     let select<?=$form['idform']?> = document.querySelector('#<?=$form['idform']?>');
                     let option<?=$form['idform']?> = Array.from(select<?=$form['idform']?>.options);
                     let selectedOpt<?=$form['idform']?> = option<?=$form['idform']?>.find(item => item.text == <?=$form['idform']?>);
                     selectedOpt<?=$form['idform']?>.selected = true;
                     
-                    // console.log(selectedOpt<?=$form['idform']?>)    
+                    // console.log(option<?=$form['idform']?>)    
                     <?php } ?>
                 n++;
             <?php endforeach;?>
