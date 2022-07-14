@@ -46,7 +46,7 @@
                     <div class="col-md-6">
                         <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                             <div>
-                                <a href="#" class="btn btn-light"><i class="bx bx-plus me-1"></i> Buat Peminjaman Ruangan</a>
+                                <a href="<?=base_url()?>/meeting-schedule/booking/" class="btn btn-light"><i class="bx bx-plus me-1"></i> Buat Peminjaman Ruangan</a>
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@
                                 <td><?=$row->idruangan?></td>
                                 <td>
                                     <a href="<?=base_url().'/room-meeting/detail/'.str_replace(' ','-',strtolower($row->nama_ruangan))?>" class="text-body">
-                                    <img src="assets/images/meeting-rooms/<?=$row->foto_ruangan?>" alt="" class="avatar-md rounded-circle me-2">
+                                    <img src="assets/images/meeting-rooms/<?=$row->foto_ruangan?>" alt="" class="avatar-md rounded-circle me-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Lihat Detail Ruangan">
                                     <?=$row->nama_ruangan?></a>
                                 </td>
                                 <td><?=$row->lokasi_ruangan?></td>
@@ -89,8 +89,10 @@
                                             <i class="bx bx-dots-horizontal-rounded"></i>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="#">Lihat Jadwal</a></li>
-                                            <li><a class="dropdown-item" href="#">Ajukan Peminjaman</a></li>
+                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-primary btn-rounded  bx bx-chevrons-right label-icon waves-effect waves-light">    </i> Lihat Jadwal</a></li>
+                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/booking/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-light btn-rounded bx bx-purchase-tag-alt label-icon waves-effect waves-light">    </i> Ajukan Peminjaman</a></li>
+                                            <div class="dropdown-divider"></div>
+                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/booking/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-success btn-rounded bx bx-check-double label-icon waves-effect waves-light">    </i> Selesai Meeting</a></li>
                                         </ul>
                                     </div>
                                 </td>

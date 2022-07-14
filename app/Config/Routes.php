@@ -205,6 +205,12 @@ $routes->post('users/post', 'User::save');
 $routes->get('room-meeting','MeetingRoom::index');
 $routes->get('room-meeting/detail/:any','MeetingRoom::detail');
 
+## Meeting Schedule
+$routes->get('meeting-schedule','MeetingSchedule::index');
+$routes->get('meeting-schedule/booking','MeetingSchedule::booking');
+$routes->get('meeting-schedule/booking/:any','MeetingSchedule::booking');
+$routes->get('meeting-schedule/:any','MeetingSchedule::schedule');
+
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
 

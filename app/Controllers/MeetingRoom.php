@@ -29,9 +29,20 @@ class MeetingRoom extends BaseController
     }
 
     public function detail() {
+        helper(['admin_helper']);
+        helper(['meeting_helper']);
         $request = \Config\Services::request();
         $param = $request->uri->getSegment(3);
-        var_dump($param);
-        //return view('meeting-room/detail-room',$data);
+        $meetingroom = getRoomByName($param);
+        $menu = getMenu($user='Admin');
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Meeting_Room']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Meeting_Room']),
+			'modules' => $menu,
+            'data' => $meetingroom,
+            'param' => $param,
+        ];
+        
+        return view('meeting-room/detail-room',$data);
     }
 }
