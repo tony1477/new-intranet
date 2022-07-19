@@ -11,11 +11,14 @@
 
                 <?php foreach($modules as $module): ?>
                 <li>
+                    <?php if(has_permission($module->modulecode)):?>
                     <a <?=$module->moduletypeid == 1 ? "href='javascript:void(0);' class='has-arrow'" : "href=".$module->url.""?> ">
                         <i data-feather="<?=$module->icon?>"></i>
                         <!-- <span data-key="t-dashboard"><?= lang('Files.Dashboard') ?></span> -->
                         <span data-key="t-<?=$module->modulecode?>"><?= $module->modulename?></span>
                     </a>
+                    <?php endif;?>
+                    <?php if(has_permission($module->modulecode)) :?>
                     <?php if($module->moduletypeid == 1): ?>
                     <ul class="sub-menu" aria-expanded="false">
                         <?php 
@@ -29,6 +32,7 @@
                         </li>
                         <?php endforeach;?>
                     </ul>
+                    <?php endif;?>
                     <?php endif;?>
                 </li>
 

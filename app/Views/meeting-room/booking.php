@@ -7,8 +7,8 @@
 
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="/assets/libs/twitter-bootstrap-wizard/prettify.css">
-    <link href="assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/libs/flatpickr/flatpickr.min.css">
+    <link href="/assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link rel="stylesheet" href="/assets/libs/flatpickr/flatpickr.min.css"> -->
 
     <?= $this->include('partials/head-css') ?>
 
@@ -178,7 +178,7 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-companyuin-input" class="form-label"><?=lang('Files.Name_Participant')?></label>
-                                                                <div class="choices" data-type="text" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><input class="form-control choices__input" id="choices-text-unique-values" type="text" value="Project-A,Project-B,Martoni F" placeholder="This is a placeholder" hidden="" tabindex="-1" data-choice="active"><div class="choices__list choices__list--multiple"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="Project-A" data-custom-properties="null" aria-selected="true">Project-A</div><div class="choices__item choices__item--selectable" data-item="" data-id="2" data-value="Project-B" data-custom-properties="null" aria-selected="true">Project-B</div><div class="choices__item choices__item--selectable" data-item="" data-id="5" data-value="Martoni F" data-custom-properties="null" aria-selected="true">Martoni F</div></div><input type="text" class="choices__input choices__input--cloned" autocomplete="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" aria-label="false" style="min-width: 1ch; width: 1ch;"></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><div class="choices__item choices__item--choice">Press Enter to add <b>"Martoni F"</b></div></div></div>
+                                                                <input class="form-control" id="choices-text-unique-values"type="text" value="" placeholder="This is a placeholder" class="custom class" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -291,10 +291,9 @@
 <script src="/assets/libs/twitter-bootstrap-wizard/prettify.js"></script>
 
 <!-- form wizard init -->
-<script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
-<script src="assets/libs/flatpickr/flatpickr.min.js"></script>
-<script src="/assets/js/pages/form-wizard.init.js"></script>
-<script src="assets/js/pages/form-advanced.init.js"></script>
+<script src="/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+<?= $this->include('partials/script/booking') ?>
+
 <script src="/assets/js/app.js"></script>
 
 </body>

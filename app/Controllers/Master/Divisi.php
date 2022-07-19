@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Master;
 
 use App\Controllers\BaseController;
 
-class Grupdivisi extends BaseController
+class Divisi extends BaseController
 {
-
-    public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\GroupDivisiModel();
+        $this->model = new \App\Models\DivisiModel();
     }
 
     public function index()
@@ -18,65 +16,59 @@ class Grupdivisi extends BaseController
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $getgroupdivisi = getGroupDivisi();
+        $divisi = getDivisi();
+        $group = getGroupDivisi();
         //$submenu = getSubmenu($moduleid=0);
-		// $data = [
-		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
-		// 	'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
-		// 	'modules' => $menu,
-        //     'groupdivisi' => $getgroupdivisi,
-		// ];
-		
-		// return view('master/grupdivisi', $data);
-
-        $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
+        
+		$data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Divisi']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Divisi']),
 			'modules' => $menu,
-            'route' => 'group-divisi',
-            'menuname' => 'Divisi_Group',
-            'data' => $getgroupdivisi,
+            'route'=>'divisi',
+            'menuname' => 'Divisi',
+            'data' => $divisi,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Code_GroupDivisi','Name_GroupDivisi','Name_GroupDivisi2','User_Created','User_Modified'),
-            'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
+            'columns' => array('Action','Id','Name_GroupDivisi','Code_Divisi','Name_Divisi','Name_Divisi2','User_Created','User_Modified'),
+            'crudScript' => view('partials/script/divisi',['menuname' => 'Divisi']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'iddivisigroup' => array('type'=>'hidden','idform'=>'id','field'=>'iddivisigroup'), 
-                // 'iddivisigroup' => array(
-                //     'label'=>'Name_GroupDivisi',
-                //     'type'=>'select',
-                //     'idform'=>'idgroup',
-                //     'form-class'=>'form-select',
-                //     'style' => 'col-md-8 col-xl-8',
-                //     'options' => array(
-                //         'list' => $group,
-                //         'id' => 'iddivisigroup',
-                //         'value' => 'gdiv_nama',
-                //     ),
-                // ),
-                'gdiv_kode' => array(
-                    'label'=>'Code_GroupDivisi',
+                'iddivisi' => array('type'=>'hidden','idform'=>'id','field'=>'iddivisi'), 
+                'iddivisigroup' => array(
+                    'label'=>'Name_GroupDivisi',
+                    'field'=>'iddivisigroup',
+                    'type'=>'select',
+                    'idform'=>'idgroup',
+                    'form-class'=>'form-select',
+                    'style' => 'col-md-8 col-xl-8',
+                    'options' => array(
+                        'list' => $group,
+                        'id' => 'Id',
+                        'value' => 'Name_GroupDivisi',
+                    ),
+                ),
+                'div_kode' => array(
+                    'label'=>'Code_Divisi',
                     'field'=>'div_kode',
                     'type'=>'text',
                     'idform'=>'kode',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'gdiv_nama' => array(
-                    'label'=>'Name_GroupDivisi',
-                    'field'=>'gdiv_nama',
+                'div_nama' => array(
+                    'label'=>'Name_Divisi',
+                    'field'=>'div_nama',
                     'type'=>'text',
-                    'idform'=>'namagroup',
+                    'idform'=>'namadivisi',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'gdiv_nama2' => array(
-                    'label'=>'Name_GroupDivisi2',
-                    'field'=>'gdiv_nama2',
+                'div_nama2' => array(
+                    'label'=>'Name_Divisi2',
+                    'field'=>'div_nama2',
                     'type'=>'text',
-                    'idform'=>'namagroup2',
+                    'idform'=>'namadivisi2',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
@@ -97,12 +89,12 @@ class Grupdivisi extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('iddivisigroup',$id)->delete();
+                $this->model->where('iddivisi',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
                         'code' => 200,
-                        'message' => 'Terjadi kesalahan dalam menghapus data',
+                        'message' => lang('Files.Delete_Error'),
                         // 'data' => $this->model->findAll()
                     );
                     return json_encode($arr);
@@ -110,13 +102,13 @@ class Grupdivisi extends BaseController
                 $arr = array(
                     'status' => 'success',
                     'code' => 200,
-                    'message' => 'Data Berhasil di Hapus',
+                    'message' => lang('Files.Delete_Success'),
                     // 'data' =>  $this->model->findAll()
                 );
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400,
+                    'code' => 400
                 );
             }
         }
@@ -139,9 +131,10 @@ class Grupdivisi extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'gdiv_kode' => $datas['kode'],
-                    'gdiv_nama' => $datas['namagroup'],
-                    'gdiv_nama2' => $datas['namagroup2'],
+                    'iddivisigroup' => $datas['idgroup'],
+                    'div_kode' => $datas['kode'],
+                    'div_nama' => $datas['namadivisi'],
+                    'div_nama2' => $datas['namadivisi2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
@@ -170,7 +163,7 @@ class Grupdivisi extends BaseController
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400,
+                    'code' => 400
                 );
             }
         }

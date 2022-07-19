@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Master;
 
 use App\Controllers\BaseController;
 
-class Kategory extends BaseController
+class Position extends BaseController
 {
     public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\KategoryModel();
+        $this->model = new \App\Models\PositionModel();
     }
 
     public function index()
@@ -17,7 +17,7 @@ class Kategory extends BaseController
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $kategory = getKategory();
+        $position = getPosition();
         //$submenu = getSubmenu($moduleid=0);
 		// $data = [
 		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
@@ -29,20 +29,20 @@ class Kategory extends BaseController
 		// return view('master/grupdivisi', $data);
 
         $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Category']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Category']),
+			'title_meta' => view('partials/title-meta', ['title' => 'Posittion']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Position']),
 			'modules' => $menu,
-            'route' => 'kategory',
-            'menuname' => 'Category',
-            'data' => $kategory,
+            'route' => 'jabatan',
+            'menuname' => 'Position',
+            'data' => $position,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Code_Category','Name_Category','Name_Category2'),
-            //'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
+            'columns' => array('Action','Id','Code_Position','Name_Position','Name_Position2'),
+            // 'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'idkategory' => array('type'=>'hidden','idform'=>'id','field'=>'idkategory'), 
+                'idjabatan' => array('type'=>'hidden','idform'=>'id','field'=>'idjabatan'), 
                 // 'iddivisigroup' => array(
                 //     'label'=>'Name_GroupDivisi',
                 //     'type'=>'select',
@@ -55,27 +55,27 @@ class Kategory extends BaseController
                 //         'value' => 'gdiv_nama',
                 //     ),
                 // ),
-                'kat_kode' => array(
-                    'label'=>'Code_Category',
-                    'field'=>'kat_kode',
+                'jab_kode' => array(
+                    'label'=>'Code_Position',
+                    'field'=>'jab_kode',
                     'type'=>'text',
                     'idform'=>'kode',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'kat_nama' => array(
-                    'label'=>'Name_Category',
-                    'field'=>'kat_nama',
+                'jab_nama' => array(
+                    'label'=>'Name_Position',
+                    'field'=>'jab_nama',
                     'type'=>'text',
-                    'idform'=>'namakategory',
+                    'idform'=>'namajabatan',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'kat_nama2' => array(
-                    'label'=>'Name_Category2',
-                    'field'=>'kat_nama2',
+                'jab_nama2' => array(
+                    'label'=>'Name_Position2',
+                    'field'=>'jab_nama2',
                     'type'=>'text',
-                    'idform'=>'namakategory2',
+                    'idform'=>'namajabatan2',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
@@ -96,7 +96,7 @@ class Kategory extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('idkategory',$id)->delete();
+                $this->model->where('idjabatan',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
@@ -138,9 +138,9 @@ class Kategory extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'gdiv_kode' => $datas['kode'],
-                    'kat_nama' => $datas['namakategory'],
-                    'kat_nama2' => $datas['namakategory2'],
+                    'jab_kode' => $datas['kode'],
+                    'jab_nama' => $datas['namajabatan'],
+                    'jab_nama2' => $datas['namajabatan2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")

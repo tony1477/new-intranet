@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Master;
 
 use App\Controllers\BaseController;
 
-class GroupUser extends BaseController
+class Grupdivisi extends BaseController
 {
+
     public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\GroupUserModel();
+        $this->model = new \App\Models\GroupDivisiModel();
     }
 
     public function index()
@@ -17,7 +18,7 @@ class GroupUser extends BaseController
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $getgroupuser = getGroupUser();
+        $getgroupdivisi = getGroupDivisi();
         //$submenu = getSubmenu($moduleid=0);
 		// $data = [
 		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
@@ -29,20 +30,20 @@ class GroupUser extends BaseController
 		// return view('master/grupdivisi', $data);
 
         $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Group_User']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_User']),
+			'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
 			'modules' => $menu,
-            'route' => 'group-user',
-            'menuname' => 'Group_User',
-            'data' => $getgroupuser,
+            'route' => 'group-divisi',
+            'menuname' => 'Divisi_Group',
+            'data' => $getgroupdivisi,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Code_GroupUser','Name_GroupUser','Name_GroupUser2'),
-            //'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
+            'columns' => array('Action','Id','Code_GroupDivisi','Name_GroupDivisi','Name_GroupDivisi2','User_Created','User_Modified'),
+            'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'idgroupuser' => array('type'=>'hidden','idform'=>'id','field'=>'idgroupuser'), 
+                'iddivisigroup' => array('type'=>'hidden','idform'=>'id','field'=>'iddivisigroup'), 
                 // 'iddivisigroup' => array(
                 //     'label'=>'Name_GroupDivisi',
                 //     'type'=>'select',
@@ -55,25 +56,25 @@ class GroupUser extends BaseController
                 //         'value' => 'gdiv_nama',
                 //     ),
                 // ),
-                'guser_kode' => array(
-                    'label'=>'Code_GroupUser',
-                    'field'=>'guser_kode',
+                'gdiv_kode' => array(
+                    'label'=>'Code_GroupDivisi',
+                    'field'=>'div_kode',
                     'type'=>'text',
                     'idform'=>'kode',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'guser_nama' => array(
-                    'label'=>'Name_GroupUser',
-                    'field'=>'guser_nama',
+                'gdiv_nama' => array(
+                    'label'=>'Name_GroupDivisi',
+                    'field'=>'gdiv_nama',
                     'type'=>'text',
                     'idform'=>'namagroup',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'guser_nama2' => array(
-                    'label'=>'Name_GroupUser2',
-                    'field'=>'guser_nama2',
+                'gdiv_nama2' => array(
+                    'label'=>'Name_GroupDivisi2',
+                    'field'=>'gdiv_nama2',
                     'type'=>'text',
                     'idform'=>'namagroup2',
                     'form-class'=>'form-control',
@@ -96,7 +97,7 @@ class GroupUser extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('idgroupuser',$id)->delete();
+                $this->model->where('iddivisigroup',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
@@ -138,9 +139,9 @@ class GroupUser extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'guser_kode' => $datas['kode'],
-                    'guser_nama' => $datas['namagroup'],
-                    'guser_nama2' => $datas['namagroup2'],
+                    'gdiv_kode' => $datas['kode'],
+                    'gdiv_nama' => $datas['namagroup'],
+                    'gdiv_nama2' => $datas['namagroup2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")

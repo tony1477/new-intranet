@@ -155,61 +155,69 @@ $routes->get('maps-vector', 'Home::show_maps_vector');
 $routes->get('maps-leaflet', 'Home::show_maps_leaflet');
 
 // INTRA
+
+// Login & Logout
+// $routes->get('login','Home::login');
+
+
+// Register
+// $routes->get('register','Home::register');
+
 ## GroupDivisi
-$routes->get('group-divisi', 'Grupdivisi::index');
-$routes->post('group-divisi/delete', 'Grupdivisi::delete');
-$routes->post('group-divisi/post', 'Grupdivisi::save');
+$routes->get('group-divisi', 'Master/Grupdivisi::index');
+$routes->post('group-divisi/delete', 'Master/Grupdivisi::delete');
+$routes->post('group-divisi/post', 'Master/Grupdivisi::save');
 
 ## Divisi
-$routes->get('divisi', 'Divisi::index');
-$routes->post('divisi/delete', 'Divisi::delete');
-$routes->post('divisi/post', 'Divisi::save');
+$routes->get('divisi', 'Master/Divisi::index');
+$routes->post('divisi/delete', 'Master/Divisi::delete');
+$routes->post('divisi/post', 'Master/Divisi::save');
 
 ## Department
-$routes->get('department', 'Department::index');
-$routes->post('department/delete', 'Department::delete');
-$routes->post('department/post', 'Department::save');
+$routes->get('department', 'Master/Department::index');
+$routes->post('department/delete', 'Master/Department::delete');
+$routes->post('department/post', 'Master/Department::save');
 
 ## Jabatan
-$routes->get('department', 'Department::index');
-$routes->post('department/delete', 'Department::delete');
-$routes->post('department/post', 'Department::save');
+$routes->get('department', 'Master/Department::index');
+$routes->post('department/delete', 'Master/Department::delete');
+$routes->post('department/post', 'Master/Department::save');
 
 
 ## Struktur
-$routes->get('struktur-organisasi', 'Strukturorg::index');
-$routes->post('struktur-organisasi/delete', 'Strukturorg::delete');
-$routes->post('struktur-organisasi/post', 'Strukturorg::save');
+$routes->get('struktur-organisasi', 'Bpo/Strukturorg::index');
+$routes->post('struktur-organisasi/delete', 'Bpo/Strukturorg::delete');
+$routes->post('struktur-organisasi/post', 'Bpo/Strukturorg::save');
 
 ## Kategory
-$routes->get('kategory', 'Kategory::index');
-$routes->post('kategory/delete', 'Kategory::delete');
-$routes->post('kategory/post', 'Kategory::save');
+$routes->get('kategory', 'Bpo/Kategory::index');
+$routes->post('kategory/delete', 'Bpo/Kategory::delete');
+$routes->post('kategory/post', 'Bpo/Kategory::save');
 
 ## Position
-$routes->get('jabatan', 'Position::index');
-$routes->post('jabatan/delete', 'Position::delete');
-$routes->post('jabatan/post', 'Position::save');
+$routes->get('jabatan', 'Master/Position::index');
+$routes->post('jabatan/delete', 'Master/Position::delete');
+$routes->post('jabatan/post', 'Master/Position::save');
 
 ## GroupUser
-$routes->get('group-user', 'GroupUser::index');
-$routes->post('group-user/delete', 'GroupUser::delete');
-$routes->post('group-user/post', 'GroupUser::save');
+$routes->get('group-user', 'Master/GroupUser::index');
+$routes->post('group-user/delete', 'Master/GroupUser::delete');
+$routes->post('group-user/post', 'Master/GroupUser::save');
 
 ## Position
-$routes->get('users', 'User::index');
-$routes->post('users/delete', 'User::delete');
-$routes->post('users/post', 'User::save');
+$routes->get('users', 'Master/User::index');
+$routes->post('users/delete', 'Master/User::delete');
+$routes->post('users/post', 'Master/User::save');
 
 ## Meeting Room
-$routes->get('room-meeting','MeetingRoom::index');
-$routes->get('room-meeting/detail/:any','MeetingRoom::detail');
+$routes->get('room-meeting','Meeting/MeetingRoom::index');
+$routes->get('room-meeting/detail/:any','Meeting/MeetingRoom::detail');
 
 ## Meeting Schedule
-$routes->get('meeting-schedule','MeetingSchedule::index');
-$routes->get('meeting-schedule/booking','MeetingSchedule::booking');
-$routes->get('meeting-schedule/booking/:any','MeetingSchedule::booking');
-$routes->get('meeting-schedule/:any','MeetingSchedule::schedule');
+$routes->get('meeting-schedule','Meeting/MeetingSchedule::index');
+$routes->get('meeting-schedule/booking','Meeting/MeetingSchedule::booking');
+$routes->get('meeting-schedule/booking/:any','Meeting/MeetingSchedule::booking');
+$routes->get('meeting-schedule/:any','Meeting/MeetingSchedule::schedule');
 
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);

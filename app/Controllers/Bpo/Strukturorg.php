@@ -1,107 +1,114 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Bpo;
 
 use App\Controllers\BaseController;
 
-class User extends BaseController
+class Strukturorg extends BaseController
 {
-    public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\UserModel();
+        $this->model = new \App\Models\StrukturorgModel();
     }
-
+    
     public function index()
     {
         helper(['admin_helper']);
         helper(['master_helper']);
         $menu = getMenu($user='Admin');
-        $users = getUser();
+        $structure = getStrukturOrg();
+        $group = getDepartment();
         //$submenu = getSubmenu($moduleid=0);
-		// $data = [
-		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
-		// 	'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
-		// 	'modules' => $menu,
-        //     'groupdivisi' => $getgroupdivisi,
-		// ];
-		
-		// return view('master/grupdivisi', $data);
-
-        $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'User']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'User']),
+        
+		$data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Structure-Org']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Structure-Org']),
 			'modules' => $menu,
-            'route' => 'users',
-            'menuname' => 'User',
-            'data' => $users,
+            'route'=>'struktur-organisasi',
+            'menuname' => 'Structure-Org',
+            'data' => $structure,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'mark_column' => array('Pwd_User'),
-            'columns' => array('Action','Id','Code_User','Name_User','Pwd_User','Email_User','Blokir_User','Photo_User'),
-            //'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
+            'columns' => array('Action','Id','Name_Department','Code_Structureorg','Name_Structureorg','Name_Structureorg2','Name_File','Cover','Publish','Status','Cover2'),
+            //'crudScript' => view('partials/script/divisi',['menuname' => 'Divisi']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'iduser' => array('type'=>'hidden','idform'=>'id','field'=>'iduser'), 
-                // 'iddivisigroup' => array(
-                //     'label'=>'Name_GroupDivisi',
-                //     'type'=>'select',
-                //     'idform'=>'idgroup',
-                //     'form-class'=>'form-select',
-                //     'style' => 'col-md-8 col-xl-8',
-                //     'options' => array(
-                //         'list' => $group,
-                //         'id' => 'iddivisigroup',
-                //         'value' => 'gdiv_nama',
-                //     ),
-                // ),
-                'user_kode' => array(
-                    'label'=>'Code_User',
-                    'field'=>'user_kode',
+                'idstrukturorg' => array('type'=>'hidden','idform'=>'id','field'=>'iddivisi'), 
+                'iddepartment' => array(
+                    'label'=>'Name_Department',
+                    'field'=>'iddepartment',
+                    'type'=>'select',
+                    'idform'=>'idgroup',
+                    'form-class'=>'form-select',
+                    'style' => 'col-md-8 col-xl-8',
+                    'options' => array(
+                        'list' => $group,
+                        'id' => 'Id',
+                        'value' => 'Name_Department',
+                    ),
+                ),
+                'stg_kode' => array(
+                    'label'=>'Code_Structureorg',
+                    'field'=>'stg_kode',
                     'type'=>'text',
                     'idform'=>'kode',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'user_nama' => array(
-                    'label'=>'Name_User',
-                    'field'=>'user_nama',
+                'stg_nama' => array(
+                    'label'=>'Name_Structureorg',
+                    'field'=>'stg_nama',
                     'type'=>'text',
-                    'idform'=>'namauser',
+                    'idform'=>'namastg',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'user_pwd' => array(
-                    'label'=>'Pwd_User',
-                    'field'=>'user_pwd',
-                    'type'=>'password',
-                    'idform'=>'pwd',
-                    'form-class'=>'form-control',
-                    'style' => 'col-md-8 col-xl-8'
-                ),
-                'user_email' => array(
-                    'label'=>'Email_User',
-                    'field'=>'user_email',
-                    'type'=>'email',
-                    'idform'=>'email',
-                    'form-class'=>'form-control',
-                    'style' => 'col-md-8 col-xl-8'
-                ),
-                'user_blokir' => array(
-                    'label'=>'Blokir_User',
-                    'field'=>'user_blokir',
-                    'type'=>'option',
-                    'value'=> array('Ya'=>'Yes','Tidak'=>'No'),
-                    'idform'=>'statususer',
-                    'form-class'=>'form-select',
-                    'style' => 'col-md-8 col-xl-8'
-                ),
-                'user_fhoto' => array(
-                    'label'=>'Photo_User',
-                    'field'=>'user_fhoto',
+                'stg_nama2' => array(
+                    'label'=>'Name_Structureorg2',
+                    'field'=>'stg_nama2',
                     'type'=>'text',
-                    'idform'=>'photouser',
+                    'idform'=>'namastg2',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_nmfile' => array(
+                    'label'=>'Name_File',
+                    'field'=>'stg_file',
+                    'type'=>'text',
+                    'idform'=>'stgfile',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_cover' => array(
+                    'label'=>'Cover',
+                    'field'=>'stg_cover',
+                    'type'=>'text',
+                    'idform'=>'stgcover',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_publish' => array(
+                    'label'=>'Publish',
+                    'field'=>'stg_publish',
+                    'type'=>'text',
+                    'idform'=>'stgpublish',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_aktif' => array(
+                    'label'=>'Status',
+                    'field'=>'stg_aktif',
+                    'type'=>'text',
+                    'idform'=>'stgstatus',
+                    'form-class'=>'form-control',
+                    'style' => 'col-md-8 col-xl-8'
+                ),
+                'stg_default' => array(
+                    'label'=>'Cover2',
+                    'field'=>'stg_default',
+                    'type'=>'text',
+                    'idform'=>'stgcover2',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
@@ -122,12 +129,12 @@ class User extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('iddivisigroup',$id)->delete();
+                $this->model->where('iddivisi',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
                         'code' => 200,
-                        'message' => 'Terjadi kesalahan dalam menghapus data',
+                        'message' => lang('Files.Delete_Error'),
                         // 'data' => $this->model->findAll()
                     );
                     return json_encode($arr);
@@ -135,13 +142,13 @@ class User extends BaseController
                 $arr = array(
                     'status' => 'success',
                     'code' => 200,
-                    'message' => 'Data Berhasil di Hapus',
+                    'message' => lang('Files.Delete_Success'),
                     // 'data' =>  $this->model->findAll()
                 );
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400,
+                    'code' => 400
                 );
             }
         }
@@ -164,12 +171,10 @@ class User extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'user_kode' => $datas['kode'],
-                    'user_nama' => $datas['namauser'],
-                    'user_pwd' => $datas['pwd'],
-                    'user_email' => $datas['email'],
-                    'user_blokir' => $datas['statususer'],
-                    'user_fhoto' => $datas['photouser'],
+                    'iddivisigroup' => $datas['idgroup'],
+                    'div_kode' => $datas['kode'],
+                    'div_nama' => $datas['namadivisi'],
+                    'div_nama2' => $datas['namadivisi2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
@@ -198,7 +203,7 @@ class User extends BaseController
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400,
+                    'code' => 400
                 );
             }
         }

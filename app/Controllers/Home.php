@@ -4,6 +4,28 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+
+	protected $auth;
+
+    /**
+     * @var AuthConfig
+     */
+    protected $config;
+
+    /**
+     * @var Session
+     */
+    protected $session;
+
+	public function __construct()
+    {
+        // Most services in this controller require
+        // the session to be started - so fire it up!
+        $this->session = service('session');
+
+        $this->config = config('Auth');
+        $this->auth   = service('authentication');
+    }
 	
 	public function index()
 	{
@@ -18,6 +40,25 @@ class Home extends BaseController
 		];
 		
 		return view('index', $data);
+	}
+
+	public function login() {
+		$data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard']),
+			// 'config' => $this->config,
+		];
+		
+		return view('auth/login', $data);
+	}
+
+	public function register() {
+		$data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard'])
+		];
+		
+		return view('auth/register', $data);
 	}
 
 	public function show_index_dark()
