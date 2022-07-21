@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class User1Model extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'tbl_ifmuser';

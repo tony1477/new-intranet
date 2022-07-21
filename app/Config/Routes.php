@@ -164,25 +164,19 @@ $routes->get('maps-leaflet', 'Home::show_maps_leaflet');
 // $routes->get('register','Home::register');
 
 ## GroupDivisi
-$routes->get('group-divisi', 'Master/Grupdivisi::index');
-$routes->post('group-divisi/delete', 'Master/Grupdivisi::delete');
-$routes->post('group-divisi/post', 'Master/Grupdivisi::save');
+$routes->get('group-divisi', 'Master/Grupdivisi::index', ['filter' => 'permission:master-data']);
+$routes->post('group-divisi/delete', 'Master/Grupdivisi::delete', ['filter' => 'permission:master-data']);
+$routes->post('group-divisi/post', 'Master/Grupdivisi::save', ['filter' => 'permission:master-data']);
 
 ## Divisi
-$routes->get('divisi', 'Master/Divisi::index');
-$routes->post('divisi/delete', 'Master/Divisi::delete');
-$routes->post('divisi/post', 'Master/Divisi::save');
+$routes->get('divisi', 'Master/Divisi::index', ['filter' => 'permission:master-data']);
+$routes->post('divisi/delete', 'Master/Divisi::delete', ['filter' => 'permission:master-data']);
+$routes->post('divisi/post', 'Master/Divisi::save', ['filter' => 'permission:master-data']);
 
 ## Department
-$routes->get('department', 'Master/Department::index');
-$routes->post('department/delete', 'Master/Department::delete');
-$routes->post('department/post', 'Master/Department::save');
-
-## Jabatan
-$routes->get('department', 'Master/Department::index');
-$routes->post('department/delete', 'Master/Department::delete');
-$routes->post('department/post', 'Master/Department::save');
-
+$routes->get('department', 'Master/Department::index', ['filter' => 'permission:master-data']);
+$routes->post('department/delete', 'Master/Department::delete', ['filter' => 'permission:master-data']);
+$routes->post('department/post', 'Master/Department::save', ['filter' => 'permission:master-data']);
 
 ## Struktur
 $routes->get('struktur-organisasi', 'Bpo/Strukturorg::index');
@@ -195,14 +189,14 @@ $routes->post('kategory/delete', 'Bpo/Kategory::delete');
 $routes->post('kategory/post', 'Bpo/Kategory::save');
 
 ## Position
-$routes->get('jabatan', 'Master/Position::index');
-$routes->post('jabatan/delete', 'Master/Position::delete');
-$routes->post('jabatan/post', 'Master/Position::save');
+$routes->get('jabatan', 'Master/Position::index',['filter' => 'permission:master-data']);
+$routes->post('jabatan/delete', 'Master/Position::delete', ['filter' => 'permission:master-data']);
+$routes->post('jabatan/post', 'Master/Position::save', ['filter' => 'permission:master-data']);
 
 ## GroupUser
-$routes->get('group-user', 'Master/GroupUser::index');
-$routes->post('group-user/delete', 'Master/GroupUser::delete');
-$routes->post('group-user/post', 'Master/GroupUser::save');
+$routes->get('group-user', 'Master/GroupUser::index', ['filter' => 'permission:master-data']);
+$routes->post('group-user/delete', 'Master/GroupUser::delete', ['filter' => 'permission:master-data']);
+$routes->post('group-user/post', 'Master/GroupUser::save', ['filter' => 'permission:master-data']);
 
 ## Position
 $routes->get('users', 'Master/User::index');

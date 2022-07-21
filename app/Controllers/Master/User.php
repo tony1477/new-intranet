@@ -9,7 +9,7 @@ class User extends BaseController
     public $model = null;
     public function __construct()
     {
-        $this->model = new \App\Models\UserModel();
+        $this->model = new \App\Models\User1Model();
     }
 
     public function index()

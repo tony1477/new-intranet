@@ -25,6 +25,8 @@
             editItems: true,
             removeItemButton: true,
         });
+
+        const noSorting = new Choices("#choices-single-no-sorting",{shouldSort:!1})
     });
 
 

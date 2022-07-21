@@ -25,7 +25,7 @@
                     <div class="col-lg-12">
                         <div class="text-center mb-5">
                             <h1 class="display-1 fw-semibold">5<span class="text-primary mx-2">0</span>0</h1>
-                            <h4 class="text-uppercase">Internal Server Error</h4>
+                            <h4 class="text-uppercase"><?= session()->getFlashData('msg') ?></h4>
                             <div class="mt-5 text-center">
                                 <a class="btn btn-primary waves-effect waves-light" href="/">Back to Dashboard</a>
                             </div>

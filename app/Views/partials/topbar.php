@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="/" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="/assets/images/logo-sm.svg" alt="" height="24">
+                        <img src="/assets/images/logo.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">WPG</span>
+                        <img src="/assets/images/logo.png" alt="" height="24"> <span class="logo-txt">WPG</span>
                     </span>
                 </a>
 
                 <a href="/" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="/assets/images/logo-sm.svg" alt="" height="24">
+                        <img src="/assets/images/logo-white.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">WPG</span>
+                        <img src="/assets/images/logo-white.png" alt="" height="24"> <span class="logo-txt">WPG</span>
                     </span>
                 </a>
             </div>

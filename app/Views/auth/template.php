@@ -4,13 +4,13 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Register | Minia - Minimal Admin & Dashboard Template</title>
+        <title>Register | Intranet Wilian Perkasa Group</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Intranet Web for Wilian Perkasa Group" name="description" />
         <meta content="Themesbrand" name="author" />
         <meta content="Martoni F" name="creator" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/logo.png">
 
             <?= $this->include('partials/head-css') ?>
 
@@ -28,7 +28,7 @@
                                 <div class="d-flex flex-column h-100">
                                     <div class="mb-4 mb-md-5 text-center">
                                         <a href="/" class="d-block auth-logo">
-                                            <img src="<?=base_url() ?>/assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">WPG</span>
+                                            <img src="<?=base_url() ?>/assets/images/logo.png" alt="" height="28"> <span class="logo-txt ">WPG</span>
                                         </a>
                                     </div>
 
@@ -45,7 +45,7 @@
                     <!-- end col -->
                     <div class="col-xxl-9 col-lg-8 col-md-7">
                         <div class="auth-bg pt-md-5 p-4 d-flex">
-                            <div class="bg-overlay bg-primary"></div>
+                            <div class="bg-overlay" style="background: rgba(0,0,0,.4);"></div>
                             <ul class="bg-bubbles">
                                 <li></li>
                                 <li></li>
@@ -70,7 +70,7 @@
                                             </div>
                                             <!-- end carouselIndicators -->
                                             <div class="carousel-inner">
-                                                <div class="carousel-item active">
+                                                <!-- <div class="carousel-item active">
                                                     <div class="testi-contain text-white">
                                                         <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
@@ -143,7 +143,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <!-- end carousel-inner -->
                                         </div>

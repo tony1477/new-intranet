@@ -27,10 +27,9 @@
     <!-- Start right Content here -->
     <!-- ============================================================== -->
     <div class="main-content">
-
+       <?php if(logged_in()==TRUE): ?>
         <div class="page-content">
             <div class="container-fluid">
-
                 <!-- start page title -->
                 <?= $page_title ?>
                 <!-- end page title -->
@@ -41,19 +40,19 @@
                             <div class="card-header">
                                 <h4 class="card-title mb-0">Form Peminjaman Ruang <?=$nama != '' ? $nama : 'Meeting'?></h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="border:0px solid #000; height:70vh">
                                 <div id="basic-pills-wizard" class="twitter-bs-wizard">
                                     <ul class="twitter-bs-wizard-nav">
                                         <li class="nav-item">
                                             <a href="#seller-details" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Seller Details">
+                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Data Diri">
                                                     <i class="bx bx-list-ul"></i>
                                                 </div>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#company-document" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Company Document">
+                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Data Peserta">
                                                     <i class="bx bx-book-bookmark"></i>
                                                 </div>
                                             </a>
@@ -61,7 +60,7 @@
 
                                         <li class="nav-item">
                                             <a href="#bank-detail" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Bank Details">
+                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Data Ruangan">
                                                     <i class="bx bxs-bank"></i>
                                                 </div>
                                             </a>
@@ -69,6 +68,7 @@
                                     </ul>
                                     <!-- wizard-nav -->
 
+                                    <form>
                                     <div class="tab-content twitter-bs-wizard-tab-content">
                                         <div class="tab-pane" id="seller-details">
                                             <div class="text-center mb-4">
@@ -80,13 +80,13 @@
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="basicpill-firstname-input" class="form-label"><?=lang('Files.First_Name')?></label>
-                                                            <input type="text" class="form-control" id="basicpill-firstname-input">
+                                                            <input type="text" class="form-control" name="fullname" value="<?=user()->fullname?>"  <?= (user()->fullname != '') ? 'readonly' : ''?>>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="basicpill-lastname-input" class="form-label"><?=lang('Files.Position')?></label>
-                                                            <input type="text" class="form-control" id="basicpill-lastname-input">
+                                                            <input type="text" class="form-control" name="position">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,19 +95,18 @@
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="basicpill-phoneno-input" class="form-label"><?=lang('Files.Department')?></label>
-                                                            <select class="form-select">
-                                                                <option selected>Select Card Type</option>
-                                                                <option value="AE">American Express</option>
-                                                                <option value="VI">Visa</option>
-                                                                <option value="MC">MasterCard</option>
-                                                                <option value="DI">Discover</option>
+                                                            <select class="form-select" id="choices-single-no-sorting" name="iddepartment">
+                                                                <option selected>- Pilih -</option>
+                                                                <?php foreach($department as $list): ?>
+                                                                <option value="<?=$list->Id?>"><?=$list->Name_Department.' ('.$list->Name_Divisi.')'?>
+                                                            <?php endforeach;?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="basicpill-email-input" class="form-label">Email</label>
-                                                            <input type="email" class="form-control" id="basicpill-email-input">
+                                                            <input type="email" class="form-control" name="email" value="<?=user()->email?>" <?=(user()->email != '') ? 'readonly' : ''?>>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -123,19 +122,19 @@
                                                     <h5>Data Peserta</h5>
                                                     <p class="card-title-desc">Lengkapi Data Peserta</p>
                                                 </div>
-                                                <form>
+                                                <form action="" method="post">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-pancard-input" class="form-label"><?=lang('Files.Date')?></label>
-                                                                <input type="date" class="form-control" id="basicpill-pancard-input">
+                                                                <input type="date" class="form-control" name="startdate" >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-vatno-input" class="form-label"><?=lang('Files.Time')?></label>
-                                                                <input type="time" class="form-control" id="basicpill-vatno-input">
+                                                                <input type="time" class="form-control" name="starttime">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -143,14 +142,14 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-cstno-input" class="form-label"><?=lang('Files.Time')?></label>
-                                                                <input type="time" class="form-control" id="basicpill-cstno-input">
+                                                                <input type="time" class="form-control" name="endtime">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-cstno-input" class="form-label"><?=lang('Files.Amount_Participant')?></label>
-                                                                <input type="number" class="form-control" id="basicpill-cstno-input">
+                                                                <input type="number" class="form-control" name="participant">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -159,18 +158,18 @@
                                                             <div class="mb-3">
                                                                 <label for="basicpill-servicetax-input" class="form-label"><?=lang('Files.ParticipantBase')?></label>
                                                                 <select class="form-select">
-                                                                    <option selected>Select Card Type</option>
-                                                                    <option value="AE">American Express</option>
-                                                                    <option value="VI">Visa</option>
-                                                                    <option value="MC">MasterCard</option>
-                                                                    <option value="DI">Discover</option>
+                                                                    <option selected>- Pilih -</option>
+                                                                    <option value="HO">HO</option>
+                                                                    <option value="Unit PS">Unit PKS</option>
+                                                                    <option value="Unit Kebun">Unit Kebun</option>
+                                                                    <option value="External">Pihak Eksternal</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-servicetax-input" class="form-label"><?=lang('Files.Speaker')?></label>
-                                                                <input type="text" class="form-control" id="basicpill-servicetax-input">
+                                                                <input type="text" class="form-control" name="speaker">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -178,7 +177,7 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-companyuin-input" class="form-label"><?=lang('Files.Name_Participant')?></label>
-                                                                <input class="form-control" id="choices-text-unique-values"type="text" value="" placeholder="This is a placeholder" class="custom class" />
+                                                                <input class="form-control" id="choices-text-unique-values"type="text" value="" placeholder="This is a placeholder" class="custom class" name="nameparti" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -202,18 +201,17 @@
                                                             <div class="mb-3">
                                                                 <label class="form-label"><?=lang('Files.Choose')?></label>
                                                                 <select class="form-select">
-                                                                    <option selected>Select Card Type</option>
-                                                                    <option value="AE">American Express</option>
-                                                                    <option value="VI">Visa</option>
-                                                                    <option value="MC">MasterCard</option>
-                                                                    <option value="DI">Discover</option>
+                                                                    <option selected>- Pilih -</option>
+                                                                    <?php foreach($room as $list)  : ?>
+                                                                    <option value="<?=$list->idruangan?>"><?=$list->nama_ruangan?></option>
+                                                                    <?php endforeach;?>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-namecard-input" class="form-label"><?=lang('Files.Kebutuhan')?></label>
-                                                                <input type="text" class="form-control" id="basicpill-namecard-input">
+                                                                <input type="text" class="form-control" name="kebutuhan" >
                                                             </div>
                                                         </div>
 
@@ -222,7 +220,7 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="basicpill-cardno-input" class="form-label"><?=lang('Files.Notulen_Meeting')?></label>
-                                                                <input type="text" class="form-control" id="basicpill-cardno-input">
+                                                                <input type="text" class="form-control" name="notulen" >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -236,6 +234,7 @@
                                         </div>
                                         <!-- tab pane -->
                                     </div>
+                                    </form>
                                     <!-- end tab content -->
                                 </div>
                             </div>
@@ -267,13 +266,14 @@
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-light w-md" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary w-md" data-bs-dismiss="modal" onclick="nextTab()">Save changes</button>
+                        <button type="submit" class="btn btn-primary w-md" data-bs-dismiss="modal" >Save changes</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- end modal -->
         <?= $this->include('partials/footer') ?>
+    <?php endif;?>
     </div>
     <!-- end main content-->
 

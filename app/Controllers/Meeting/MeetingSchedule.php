@@ -41,11 +41,12 @@ class MeetingSchedule extends BaseController
     }
 
     public function booking() {
-        helper(['admin_helper']);
-        helper(['meeting_helper']);
+        helper(['admin_helper','meeting_helper','master_helper']);
         $menu = getMenu($user='Admin');
         $request = \Config\Services::request();
         $param = $request->uri->getSegment(3);
+        $getDepartment = getDepartment();
+        $rooms = getRoom();
         if($param!='') {
             $getRoom = getRoomByName($param);
             if($getRoom==null) return redirect()->to('room-meeting'); 
@@ -56,6 +57,8 @@ class MeetingSchedule extends BaseController
 			'modules' => $menu,
             // 'data' => $schedule,
             'nama' => ucwords(str_replace('-room',' ',$param)),
+            'department' => $getDepartment,
+            'room' => $rooms,
         ];
         return view('meeting-room/booking',$data);
     }
