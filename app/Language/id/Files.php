@@ -135,7 +135,8 @@ return [
 
     // Department
     "Code_Department" => "Kode Departemen",
-    "Name_Department" => "Nama Departemen (IDN)",
+    "Name_Department" => "Nama Departemen ",
+    "Name_Department1" => "Nama Departemen (IDN)",
     "Name_Department2" => "Nama Departemen (ENG)",
     "Department" => "Departemen",
 

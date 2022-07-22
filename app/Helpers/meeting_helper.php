@@ -33,3 +33,21 @@ function getScheduleByName($name) {
     join data_ruangan b on b.idruangan = a.idruangan
     where b.nama_ruangan = '{$name}' order by tgl_mulai desc")->getResult();
 }
+
+function getListSchedule() {
+    $db = db_connect();
+    return $db->query("select a.*, b.foto_ruangan, b.nama_ruangan, c.dep_nama, dep_kode,
+    case when a.status = 1 then 'Menunggu Approval' when a.status = 2 then 'Sedang Digunakan' when a.status = 3 then 'Selesai' else 'Batal' end as status_kode
+    from peminjaman_ruangan a 
+    join data_ruangan b on b.idruangan = a.idruangan
+    join tbl_ifmdepartemen c on c.iddepartment = a.iddepartment
+    order by tgl_mulai desc")->getResult();
+}
+
+function getDetailSchedule($id) {
+    $db = db_connect();
+    return $db->query("select a.*, b.nama_ruangan
+    from peminjaman_ruangan a
+    join data_ruangan b on b.idruangan = a.idruangan
+    where a.idpeminjaman = {$id}")->getResult();
+}

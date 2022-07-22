@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <div class="row mb-3 g-0">
                                     <div class="col-sm-4">
-                                        <img src="assets/images/users/default.png" class="img-fluid rounded-circle border border-light img-upload" alt="">
+                                        <img src="assets/images/users/<?=user()->user_image?>" class="img-fluid rounded-circle border border-light img-upload" alt="">
                                         <input type="file" id="user_image" name="user_image" style="display: none;" />
                                         <div>
                                             <button class="btn btn-info mt-4">Upload</button>

@@ -89,10 +89,10 @@
                                             <i class="bx bx-dots-horizontal-rounded"></i>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-primary btn-rounded  bx bx-chevrons-right label-icon waves-effect waves-light">    </i> Lihat Jadwal</a></li>
-                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/booking/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-light btn-rounded bx bx-purchase-tag-alt label-icon waves-effect waves-light">    </i> Ajukan Peminjaman</a></li>
+                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-primary btn-rounded  bx bx-chevrons-right label-icon waves-effect waves-light"></i> Lihat Jadwal</a></li>
+                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/booking/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-light btn-rounded bx bx-purchase-tag-alt label-icon waves-effect waves-light"></i> Ajukan Peminjaman</a></li>
                                             <div class="dropdown-divider"></div>
-                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/booking/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-success btn-rounded bx bx-check-double label-icon waves-effect waves-light">    </i> Selesai Meeting</a></li>
+                                            <li><a class="dropdown-item" href="<?=base_url()?>/meeting-schedule/booking/<?=str_replace(' ','-',strtolower($row->nama_ruangan))?>"><i class="btn-success btn-rounded bx bx-check-double label-icon waves-effect waves-light"></i> Selesai Meeting</a></li>
                                         </ul>
                                     </div>
                                 </td>

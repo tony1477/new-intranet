@@ -211,6 +211,7 @@ $routes->get('room-meeting/detail/:any','Meeting/MeetingRoom::detail');
 $routes->get('meeting-schedule','Meeting/MeetingSchedule::index');
 $routes->get('meeting-schedule/booking','Meeting/MeetingSchedule::booking');
 $routes->get('meeting-schedule/booking/:any','Meeting/MeetingSchedule::booking');
+$routes->get('meeting-schedule/detail/:num','Meeting/MeetingSchedule::detail');
 $routes->get('meeting-schedule/:any','Meeting/MeetingSchedule::schedule');
 
 // RESOURCE
