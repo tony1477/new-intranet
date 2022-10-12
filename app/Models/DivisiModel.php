@@ -14,7 +14,7 @@ class DivisiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['div_kode','div_nama','div_nama2','gdiv_kode','iddivisigroup','user_c','user_m','time_c','time_m','tgl_c','tgl_m'];
+    protected $allowedFields    = ['div_kode','div_nama','div_nama2','gdiv_kode','user_c','user_m','time_c','time_m','tgl_c','tgl_m'];
 
     // Dates
     protected $useTimestamps = false;

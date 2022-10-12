@@ -9,12 +9,12 @@ class Email extends BaseConfig
     /**
      * @var string
      */
-    public $fromEmail = 'it@wilianperkasa.com';
+    public $fromEmail;
 
     /**
      * @var string
      */
-    public $fromName = 'IT Wilian Perkasa Group';
+    public $fromName;
 
     /**
      * @var string
@@ -26,14 +26,14 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $userAgent = 'CodeIgniter - 4';
+    public $userAgent = 'CodeIgniter';
 
     /**
      * The mail sending protocol: mail, sendmail, smtp
      *
      * @var string
      */
-    public $protocol = 'smtp';
+    public $protocol = 'mail';
 
     /**
      * The server path to Sendmail.
@@ -47,35 +47,35 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    public $SMTPHost = 'srv42.niagahoster.com';
+    public $SMTPHost;
 
     /**
      * SMTP Username
      *
      * @var string
      */
-    public $SMTPUser = 'it@wilianperkasa.com';
+    public $SMTPUser;
 
     /**
      * SMTP Password
      *
      * @var string
      */
-    public $SMTPPass = 'Lsp1234';
+    public $SMTPPass;
 
     /**
      * SMTP Port
      *
      * @var int
      */
-    public $SMTPPort = 465;
+    public $SMTPPort = 25;
 
     /**
      * SMTP Timeout (in seconds)
      *
      * @var int
      */
-    public $SMTPTimeout = 30;
+    public $SMTPTimeout = 5;
 
     /**
      * Enable persistent SMTP connections
@@ -89,8 +89,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    // public $SMTPCrypto = 'tls';
-    public $SMTPCrypto = 'ssl';
+    public $SMTPCrypto = 'tls';
 
     /**
      * Enable word-wrap
@@ -111,8 +110,7 @@ class Email extends BaseConfig
      *
      * @var string
      */
-    // public $mailType = 'text';
-    public $mailType = 'html';
+    public $mailType = 'text';
 
     /**
      * Character set (utf-8, iso-8859-1, etc.)

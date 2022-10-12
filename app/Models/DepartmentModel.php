@@ -7,20 +7,20 @@ use CodeIgniter\Model;
 class DepartmentModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'tbl_ifmdepartemen';
-    protected $primaryKey       = 'iddepartment';
+    protected $table            = 'departments';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['dep_kode','dep_nama','dep_nama2','div_kode','iddivisi','user_c','user_m','time_c','time_m','tgl_c','tgl_m'];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = false;
-    protected $dateFormat    = 'date';
-    protected $createdField  = 'tgl_c';
-    protected $updatedField  = 'tgl_m';
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
     // Validation

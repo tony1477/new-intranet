@@ -155,20 +155,13 @@ $routes->get('maps-vector', 'Home::show_maps_vector');
 $routes->get('maps-leaflet', 'Home::show_maps_leaflet');
 
 // INTRA
-
-// Login & Logout
-// $routes->get('login','Home::login');
-
-
-// Register
-// $routes->get('register','Home::register');
-
 ## GroupDivisi
-$routes->get('group-divisi', 'Master/Grupdivisi::index', ['filter' => 'permission:master-data']);
-$routes->post('group-divisi/delete', 'Master/Grupdivisi::delete', ['filter' => 'permission:master-data']);
-$routes->post('group-divisi/post', 'Master/Grupdivisi::save', ['filter' => 'permission:master-data']);
+$routes->get('group-divisi', 'Grupdivisi::index');
+$routes->post('group-divisi/delete', 'Grupdivisi::delete');
+$routes->post('group-divisi/post', 'Grupdivisi::save');
 
 ## Divisi
+<<<<<<< HEAD
 $routes->get('divisi', 'Master/Divisi::index', ['filter' => 'permission:master-data']);
 $routes->post('divisi/delete', 'Master/Divisi::delete', ['filter' => 'permission:master-data']);
 $routes->post('divisi/post', 'Master/Divisi::save', ['filter' => 'permission:master-data']);
@@ -218,6 +211,9 @@ $routes->get('meeting-schedule/:any','Meeting/MeetingSchedule::schedule');
 ## Website
 $routes->get('tentang/profil','Website/About/Profile::index');
 $routes->get('informasi/karir','Website/Info/Career::index');
+=======
+$routes->get('data-divisi', 'Divisi::index');
+>>>>>>> 942b1dc1a700c83745b6d32c1bb29c99e72b4656
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
 

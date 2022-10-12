@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="/" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="/assets/images/logo.png" alt="" height="24">
+                        <img src="assets/images/logo-sm.svg" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="/assets/images/logo.png" alt="" height="24"> <span class="logo-txt">WPG</span>
+                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">WPG</span>
                     </span>
                 </a>
 
                 <a href="/" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="/assets/images/logo-white.png" alt="" height="24">
+                        <img src="assets/images/logo-sm.svg" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="/assets/images/logo-white.png" alt="" height="24"> <span class="logo-txt">WPG</span>
+                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">WPG</span>
                     </span>
                 </a>
             </div>
@@ -62,13 +62,13 @@
                     $lang = $session->get('lang');
                     switch ($lang) {
                         case 'id':
-                            echo '<img src="/assets/images/flags/id.jpg" alt="Header Language" height="16">';
+                            echo '<img src="assets/images/flags/id.jpg" alt="Header Language" height="16">';
                             break;
                         case 'en':
-                            echo '<img src="/assets/images/flags/us.jpg" alt="Header Language" height="16">';
+                            echo '<img src="assets/images/flags/us.jpg" alt="Header Language" height="16">';
                             break;
                         default:
-                            echo '<img src="/assets/images/flags/id.jpg" alt="Header Language" height="16">';
+                            echo '<img src="assets/images/flags/id.jpg" alt="Header Language" height="16">';
                     }
                     ?>
                 </button>
@@ -77,11 +77,11 @@
                     <!-- item-->
                     
                         <a href="<?= base_url('lang/id'); ?>" class="dropdown-item notify-item language" data-lang="id">
-                            <img src="/assets/images/flags/id.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Bahasa</span>
+                            <img src="assets/images/flags/id.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Bahasa</span>
                         </a>
 
                         <a href="<?= base_url('lang/en'); ?>" class="dropdown-item notify-item language" data-lang="en">
-                            <img src="/assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
+                            <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
                         </a>
 
                 </div>
@@ -165,7 +165,7 @@
                         <a href="#!" class="text-reset notification-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <img src="/assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                    <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-1"><?= lang('Files.James_Lemire') ?></h6>
@@ -212,7 +212,7 @@
                         <a href="#!" class="text-reset notification-item">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <img src="/assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                    <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm" alt="user-pic">
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-1"><?= lang('Files.Salena_Layfield') ?></h6>
@@ -240,16 +240,16 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="/assets/images/users/<?=user()->user_image?>" alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1 fw-medium"><?= (user()->fullname != '') ? user()->fullname : 'Isi Nama Anda';?></span>
+                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium">Shawn L.</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="apps-contacts-profile"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= lang('Files.Profile') ?></a>
-                   <a class="dropdown-item" href="#"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> <?= lang('Files.Lock_screen') ?></a>
+                   <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> <?= lang('Files.Lock_screen') ?></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= lang('Files.Logout') ?></a>
+                    <a class="dropdown-item" href="auth-login"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= lang('Files.Logout') ?></a>
                 </div>
             </div>
 

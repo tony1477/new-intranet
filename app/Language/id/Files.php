@@ -122,62 +122,14 @@ return [
     // Grup Divisi
     "Group_Divisi" => "Divisi Grup",
     "Group_Name" => "Nama Group",
-    "Code_GroupDivisi" => "Kode Divisi Grup",
-    "Name_GroupDivisi" => "Nama Divisi Grup (IDN)",
-    "Name_GroupDivisi2" => "Nama Divisi Grup (ENG)",
     "Divisi_Group" => "Grup Divisi",
+    "Code_GroupDivisi" => "Kode Divisi Grup",
+    "Name_GroupDivisi" => "Nama Divisi Grup",
     
     // Divisi
     "Code_Divisi" => "Kode Divisi",
-    "Name_Divisi" => "Nama Divisi (IDN)",
-    "Name_Divisi2" => "Nama Divisi (ENG)",
+    "Name_Divisi" => "Nama Divisi",
     "Divisi" => "Divisi",
-
-    // Department
-    "Code_Department" => "Kode Departemen",
-    "Name_Department" => "Nama Departemen ",
-    "Name_Department1" => "Nama Departemen (IDN)",
-    "Name_Department2" => "Nama Departemen (ENG)",
-    "Department" => "Departemen",
-
-    // Structure Org
-    "Code_Structureorg" => "Kode Struktur",
-    "Name_Structureorg" => "Nama Struktur (IDN)",
-    "Name_Structureorg2" => "Nama Struktur (ENG)",
-    "Name_File" => "Nama File",
-    "Cover" => "Cover",
-    "Publish" => "Publish",
-    "Status" => "Status",
-    "Cover2" => "Gunakan Cover",
-    "Structure-Org" => "Struktur Organisasi",
-
-    // Kategory
-    "Code_Category" => "Kode Kategory",
-    "Name_Category" => "Nama Kategory (IDN)",
-    "Name_Category2" => "Nama Kategory (ENG)",
-    "Category" => "Katagory",
-
-    // Position
-    "Code_Position" => "Kode Jabatan",
-    "Name_Position" => "Nama Jabatan (IDN)",
-    "Name_Position2" => "Nama Jabatan(ENG)",
-    "Position" => "Jabatan",
-
-    // Group User
-    "Code_GroupUser" => "Kode Grup Pengguna",
-    "Name_GroupUser" => "Nama Grup Pengguna (IDN)",
-    "Name_GroupUser2" => "Nama Grup Pengguna (ENG)",
-    "Group_User" => "Grup Pengguna",
-
-    // User
-    "Code_User" => "Kode Pengguna",
-    "Name_User" => "Nama Pengguna",
-    "Pwd_User" => "Kata Sandi",
-    "Email_User" => "Alamat Surel",
-    "Status_User" => "Status",
-    "Blokir_User" => "Blokir?",
-    "Photo_User" => "Foto",
-    "User" => "Pengguna",
 
     // Common
     "Intranet" => "Intranet",
@@ -189,16 +141,8 @@ return [
     "Edit" => "Ubah",
     "Close" => "Tutup",
     "Save" => "Simpan",
-    "Delete" => "Hapus",
     "Deleted_Confirm" => "Apakah Anda yakin mau menghapus data ?",
     "Yes" => "Ya",
-    "No" => "Tidak",
-    "Save_Success" => "Data Berhasil di Simpan",
-    "Update_Success" => "Data Berhasil di Ubah",
-    "Delete_Success" => "Data Berhasil di Hapus",
-    "Delete_Error" => "Terjadi kesalahan saat menghapus data",
-    "(Eng)" => "(ENG)",
-    "(Idn)" => "(IDN)",
     
     // Menu
     "group-divisi" => 'Grup Divisi',
@@ -207,6 +151,7 @@ return [
     "jabatan" => "Jabatan",
     "ruangan-meeting" => "Ruangan Meeting",
     "jadwal-meeting" => "Jadwal Meeting",
+<<<<<<< HEAD
     "struktur-org" => "Sturktur Organisasi",
     "kategory" => "Kategori",
     "dokumen" => "Dokumen",
@@ -220,5 +165,7 @@ return [
     "informasi" => "Informasi",
     "kontak" => "Kontak",
     
+=======
+>>>>>>> 942b1dc1a700c83745b6d32c1bb29c99e72b4656
 
 ];

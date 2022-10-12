@@ -120,64 +120,16 @@ return [
     "Utility" => "Utility",
 
     // Grup Divisi
-    // "Group_Divisi" => "Division Group",
+    "Group_Divisi" => "Division Group",
     "Group_Name" => "Group Name",    
-    "Code_GroupDivisi" => "Division Group Code",
-    "Name_GroupDivisi" => "Division Group Name (IDN)",
-    "Name_GroupDivisi2" => "Division Group Name (ENG)",
     "Divisi_Group" => "Group Division",
+    "Code_GroupDivisi" => "Division Group Code",
+    "Name_GroupDivisi" => "Division Group Name",
 
     // Divisi
     "Code_Divisi" => "Division Code",
-    "Name_Divisi" => "Division Name (IDN)",
-    "Name_Divisi2" => "Division Name (ENG)",
+    "Name_Divisi" => "Division Name",
     "Divisi" => "Division",
-
-    // Department
-    "Code_Department" => "Department Code",
-    "Name_Department" => "Department Name ",
-    "Name_Department1" => "Department Name (IDN)",
-    "Name_Department2" => "Department Name (ENG)",
-    "Department" => "Department",
-
-    // Structure Org
-    "Code_Structureorg" => "Structure Code",
-    "Name_Structureorg" => "Structure Org. Name (IDN)",
-    "Name_Structureorg2" => "Structure Org. Name (ENG)",
-    "Name_File" => "File Name",
-    "Cover" => "Cover",
-    "Publish" => "Publish",
-    "Status" => "Status",
-    "Cover2" => "Use Cover",
-    "Structure-Org" => "Organization Structure",
-
-    // Kategory
-    "Code_Category" => "Category Code",
-    "Name_Category" => "Category Name (IDN)",
-    "Name_Category2" => "Category Name (ENG)",
-    "Category" => "Category ",
-
-    // Position
-    "Code_Position" => "Position Code",
-    "Name_Position" => "Position Name(IDN)",
-    "Name_Position2" => "Position Name(ENG)",
-    "Position" => "Position",
-
-    // Group User
-    "Code_GroupUser" => "User Group Code",
-    "Name_GroupUser" => "User Group Name (IND)",
-    "Name_GroupUser2" => "User Group Name (ENG)",
-    "Group_User" => "User Group",
-
-    // User
-    "Code_User" => "User Code",
-    "Name_User" => "User Name",
-    "Pwd_User" => "Password",
-    "Email_User" => "Email Address",
-    "Status_User" => "Status",
-    "Blokir_User" => "Suspend?",
-    "Photo_User" => "Photo Profile",
-    "User" => "User",
     
     // Common
     "Intranet" => "Intranet",
@@ -189,16 +141,8 @@ return [
     "Edit" => "Edit",
     "Close" => "Close",
     "Save" => "Save",
-    "Delete" => "Delete",
     "Deleted_Confirm" => "Are you sure want delete this data ?",
     "Yes" => "Yes",
-    "No" => "No",
-    "Save_Success" => "Data has been saved",
-    "Update_Success" => "Data has been updated",
-    "Delete_Success" => "Data has been deleted",
-    "Delete_Error" => "Wrong happen! Error when deleted",
-    "(Eng)" => "(ENG)",
-    "(Idn)" => "(IDN)",
 
     // Menu
     "group-divisi" => 'Division Group',
@@ -207,6 +151,7 @@ return [
     "jabatan" => "Position",
     "ruangan-meeting" => "List Room",
     "jadwal-meeting" => "Meeting Schedule",
+<<<<<<< HEAD
     "struktur-org" => "Organisation Structure",
     "kategory" => "Category",
     "dokumen" => "Document",
@@ -219,5 +164,7 @@ return [
     "keberlanjutan" => "Sustainability",
     "informasi" => "Information",
     "kontak" => "Contact",
+=======
+>>>>>>> 942b1dc1a700c83745b6d32c1bb29c99e72b4656
 
 ];
