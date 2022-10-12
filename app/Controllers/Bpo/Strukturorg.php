@@ -116,6 +116,7 @@ class Strukturorg extends BaseController
 		];
 		
 		return view('master/m_view', $data);
+		// var_dump($group);
     }
 
     public function delete()

@@ -212,6 +212,13 @@ return [
     "dokumen" => "Dokumen",
     "group-user" => "Grup Pengguna",
     "users" => "Pengguna",
+    "website" => "Website",
+    "tentang" => "Tentang",
+    "bisnis" => "Bisnis",
+    "investor" => "Investor",
+    "keberlanjutan" => "Keberlanjutan",
+    "informasi" => "Informasi",
+    "kontak" => "Kontak",
     
 
 ];

@@ -32,11 +32,17 @@ class Home extends BaseController
 		// getMenu
         helper(['admin_helper']);
         $menu = getMenu($user='Admin');
+		$sess = $this->session;
+		if($sess->meeting_day == null) {
+			$sess->set(['meeting_day' => 'Today']);
+		}
         //$submenu = getSubmenu($moduleid=0);
 		$data = [
 			'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
 			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Dashboard']),
 			'modules' => $menu,
+			// 'data_meeting' => 
+			// 'session' => $sess
 		];
 		
 		return view('index', $data);

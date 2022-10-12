@@ -214,6 +214,10 @@ $routes->get('meeting-schedule/booking/:any','Meeting/MeetingSchedule::booking')
 $routes->get('meeting-schedule/detail/:num','Meeting/MeetingSchedule::detail');
 $routes->get('meeting-schedule/:any','Meeting/MeetingSchedule::schedule');
 
+
+## Website
+$routes->get('tentang/profil','Website/About/Profile::index');
+$routes->get('informasi/karir','Website/Info/Career::index');
 // RESOURCE
 //$routes->resource('grupdivisi', ['controller' => 'Api\Grupdivisi']);
 

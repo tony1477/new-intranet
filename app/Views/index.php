@@ -113,60 +113,59 @@
                         <div class="card">
                             <div class="card-header align-items-center d-flex">
                                 <h4 class="card-title mb-0 flex-grow-1 fs-3 text-center">Meeting Schedule</h4>
-                                <div class="flex-shrink-0">
-                                    <select class="form-select form-select-sm mb-0 my-n1">
-                                        <option value="Today" selected="">Today</option>
+                                <!-- <div class="flex-shrink-0">
+                                    <select class="form-select form-select-sm mb-0 my-n1" onchange="changeFunc()" id="select_day">
+                                        <option value="Today">Today</option>
                                         <option value="Yesterday">Yesterday</option>
-                                        <option value="Week">Tomorrow</option>
+                                        <option value="Tomorrow">Tomorrow</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div><!-- end card header -->
-
                             <div class="card-body px-0">
                                 <div class="px-3" data-simplebar="init" style="max-height: 35vh;"><div class="simplebar-wrapper" style="margin: 0px -16px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: -15px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 0px 16px;">
-                                    <ul class="list-unstyled activity-wid mb-0">
+                                    <ul class="list-unstyled activity-wid mb-0" id="ulMeeting">
 
-                                        <li class="activity-list activity-border">
-                                            <div class="activity-icon avatar-md">
-                                                <span class="avatar-title bg-soft-warning text-warning rounded-circle">
-                                                <i class="bx bxs-report font-size-24"></i>
-                                                </span>
-                                            </div>
-                                            <div class="timeline-list-item">
-                                                <div class="d-flex">
-                                                    <div class="flex-grow-1 overflow-hidden me-4">
-                                                        <h5 class="font-size-14 mb-1">24/05/2021, 18:24:56</h5>
-                                                        <p class="text-truncate text-muted font-size-13">Bapak Purwantoro, Ibu Lainy, Bapak Hermansyah, Ibu Ocni, Ibu Widiyati, Bapak Daud</p>
-                                                    </div>
-                                                    <div class="flex-shrink-0 text-end me-3">
-                                                        <h6 class="mb-1">Pemateri </h6>
-                                                        <div class="font-size-13">Bapak Errry Wilian</div>
-                                                    </div>
+                                    <li class="activity-list activity-border" id="liMeeting">
+                                        <div class="activity-icon avatar-md">
+                                            <span class="avatar-title bg-soft-warning text-warning rounded-circle">
+                                            <i class="bx bxs-report font-size-24"></i>
+                                            </span>
+                                        </div>
+                                        <div class="timeline-list-item">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1 overflow-hidden me-4">
+                                                    <h5 class="font-size-14 mb-1">24/05/2021, 18:24:56</h5>
+                                                    <p class="text-truncate text-muted font-size-13">Bapak Purwantoro, Ibu Lainy, Bapak Hermansyah, Ibu Ocni, Ibu Widiyati, Bapak Daud</p>
+                                                </div>
+                                                <div class="flex-shrink-0 text-end me-3">
+                                                    <h6 class="mb-1">Pemateri </h6>
+                                                    <div class="font-size-13">Bapak Errry Wilian</div>
+                                                </div>
 
-                                                    <div class="flex-shrink-0 text-end">
-                                                        <div class="dropdown">
-                                                            <a class="text-muted dropdown-toggle font-size-24" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                <i class="mdi mdi-dots-vertical"></i>
-                                                            </a>
-        
-                                                            <div class="dropdown-menu dropdown-menu-end" style="">
-                                                                <a class="dropdown-item" href="#">Lihat Detail</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Selesai Meeting</a>
-                                                            </div>
+                                                <div class="flex-shrink-0 text-end">
+                                                    <div class="dropdown">
+                                                        <a class="text-muted dropdown-toggle font-size-24" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="mdi mdi-dots-vertical"></i>
+                                                        </a>
+    
+                                                        <div class="dropdown-menu dropdown-menu-end" style="">
+                                                            <a class="dropdown-item" href="#">Lihat Detail</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="#">Selesai Meeting</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                        </li>
-
-                                        <li class="activity-list activity-border">
-                                            <div class="timeline-list-item">
-                                                <div class="flex-grow-1 overflow-hidden me-4">
-                                                    <a href="" class="font-size-14 mb-1">Lihat Semua Jadwal</a>
-                                                </div>
                                             </div>
-                                        </li>
+                                        </div> 
+                                    </li>
+
+                                    <li class="activity-list activity-border">
+                                        <div class="timeline-list-item">
+                                            <div class="flex-grow-1 overflow-hidden me-4">
+                                                <a href="<?=base_url()?>/meeting-schedule" class="font-size-14 mb-1">Lihat Semua Jadwal</a>
+                                            </div>
+                                        </div>
+                                    </li>
 
 
                                       
@@ -236,6 +235,13 @@
 $(".img-upload").click(function() {
     $("input[id='user_image']").click();
 });
+
+function changeFunc() {
+    const select = document.querySelector('#select_day')
+    const optionValue = select.options[select.selectedIndex].value
+    // console.log(optionValue)
+
+}
 </script>
 </body>
 

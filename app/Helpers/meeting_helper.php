@@ -44,6 +44,11 @@ function getListSchedule() {
     order by tgl_mulai desc")->getResult();
 }
 
+function getListSchedulebyDay($day=1) {
+    $db = db_connect();
+    
+}
+
 function getDetailSchedule($id) {
     $db = db_connect();
     return $db->query("select a.*, b.nama_ruangan

@@ -1,88 +1,82 @@
 <?php
 
-namespace App\Controllers\Master;
+namespace App\Controllers\Website\About;
 
 use App\Controllers\BaseController;
+use App\Models\Website\PageModel;
 
-class Position extends BaseController
+class Profile extends BaseController
 {
-    public $model = null;
+    private $model = null;
+    private $ent = null;
+    private $db = null;
     public function __construct()
     {
-        $this->model = new \App\Models\PositionModel();
+        $this->model = new \App\Models\Website\About\ProfileModel();
+        $this->profile = new \App\Entities\Profile;
+        // $this->db = \Config\Database::connect('webiste');
     }
 
     public function index()
     {
         helper(['admin_helper']);
         helper(['master_helper']);
+        $pageModel = new PageModel;
         $menu = getMenu($user='Admin');
-        $position = getPosition();
+        // $profile = $this->model->findAll();
+        $profile = $this->model->getDataProfile()->getResult('\App\Entities\Profile');
+        $page = $pageModel->findAll();
+        //$divisi = getDivisi();
         //$submenu = getSubmenu($moduleid=0);
-		// $data = [
-		// 	'title_meta' => view('partials/title-meta', ['title' => 'Group_Divisi']),
-		// 	'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Group_Divisi']),
-		// 	'modules' => $menu,
-        //     'groupdivisi' => $getgroupdivisi,
-		// ];
-		
-		// return view('master/grupdivisi', $data);
-
-        $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Position']),
-			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Intranet', 'li_2' => 'Position']),
+		$data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
+			'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Website', 'li_2' => 'Profile']),
 			'modules' => $menu,
-            'route' => 'jabatan',
-            'menuname' => 'Position',
-            'data' => $position,
+            'route'=>'tentang/profil',
+            'menuname' => 'Profile',
+            'data' => $profile,
             //'options' => array('option1' => $group),
             'columns_hidden' => array('Action'),
-            'columns' => array('Action','Id','Code_Position','Name_Position','Name_Position2'),
-            // 'crudScript' => view('partials/script/groupdivisi',['menuname' => 'Divisi_Group','forms'=>'forms']),
+            'columns' => array('Action','Id','Title','Content','Page'),
+            //'crudScript' => view('partials/script/department',['menuname' => 'Department']),
             'forms' => [
                 # rule
                 # column_name => array(type,'name and id','class','style')
-                'idjabatan' => array('type'=>'hidden','idform'=>'id','field'=>'idjabatan'), 
-                // 'iddivisigroup' => array(
-                //     'label'=>'Name_GroupDivisi',
-                //     'type'=>'select',
-                //     'idform'=>'idgroup',
-                //     'form-class'=>'form-select',
-                //     'style' => 'col-md-8 col-xl-8',
-                //     'options' => array(
-                //         'list' => $group,
-                //         'id' => 'iddivisigroup',
-                //         'value' => 'gdiv_nama',
-                //     ),
-                // ),
-                'jab_kode' => array(
-                    'label'=>'Code_Position',
-                    'field'=>'jab_kode',
+                'articleid' => array('type'=>'hidden','idform'=>'id','field'=>'articleid'), 
+                'title' => array(
+                    'label'=>'Title',
+                    'field'=>'title',
                     'type'=>'text',
-                    'idform'=>'kode',
+                    'idform'=>'judul',
                     'form-class'=>'form-control',
                     'style' => 'col-md-8 col-xl-8'
                 ),
-                'jab_nama' => array(
-                    'label'=>'Name_Position',
-                    'field'=>'jab_nama',
-                    'type'=>'text',
-                    'idform'=>'namajabatan',
+                'content' => array(
+                    'label'=>'Content',
+                    'field'=>'content',
+                    'type'=>'textarea',
+                    'idform'=>'isi',
                     'form-class'=>'form-control',
-                    'style' => 'col-md-8 col-xl-8'
+                    'style' => 'col-md-12 col-xl-12'
                 ),
-                'jab_nama2' => array(
-                    'label'=>'Name_Position2',
-                    'field'=>'jab_nama2',
-                    'type'=>'text',
-                    'idform'=>'namajabatan2',
-                    'form-class'=>'form-control',
-                    'style' => 'col-md-8 col-xl-8'
+                'pageid' => array(
+                    'label'=>'Page',
+                    'field'=>'pageid',
+                    'type'=>'select',
+                    'idform'=>'page_id',
+                    'form-class'=>'form-select',
+                    'style' => 'col-md-8 col-xl-8',
+                    'options' => array(
+                        'list' => $page,
+                        'id' => 'Id',
+                        'value' => 'Page',
+                    ),
                 ),
             ]
 		];
-		// var_dump($position);
-		return view('master/m_view', $data);
+		
+		return view('master/w_view', $data);
+        // var_dump($page);
     }
 
     public function delete()
@@ -96,12 +90,12 @@ class Position extends BaseController
         if($this->request->isAJAX()) {
             try {
                 $id = $this->request->getVar('id');
-                $this->model->where('idjabatan',$id)->delete();
+                $this->model->where('iddepartment',$id)->delete();
                 if($this->model->find($id)) {
                     $arr = array(
                         'status' => 'warning',
                         'code' => 200,
-                        'message' => 'Terjadi kesalahan dalam menghapus data',
+                        'message' => lang('Files.Delete_Error'),
                         // 'data' => $this->model->findAll()
                     );
                     return json_encode($arr);
@@ -109,13 +103,13 @@ class Position extends BaseController
                 $arr = array(
                     'status' => 'success',
                     'code' => 200,
-                    'message' => 'Data Berhasil di Hapus',
+                    'message' => lang('Files.Delete_Success'),
                     // 'data' =>  $this->model->findAll()
                 );
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400,
+                    'code' => 400
                 );
             }
         }
@@ -138,9 +132,10 @@ class Position extends BaseController
                     $datas = (array) $datas;
                 }
                 $data = [
-                    'jab_kode' => $datas['kode'],
-                    'jab_nama' => $datas['namajabatan'],
-                    'jab_nama2' => $datas['namajabatan2'],
+                    'iddivisi' => $datas['id_divisi'],
+                    'dep_kode' => $datas['kode'],
+                    'dep_nama' => $datas['namadepartment'],
+                    'dep_nama2' => $datas['namadepartment2'],
                     // 'user_m' => $this->session->user_kode,
                     'tgl_m'=>date('Y-m-d'),
                     'time_m'=>date("h:i:s a")
@@ -169,7 +164,7 @@ class Position extends BaseController
             }catch (\Exception $e) {
                 $arr = array(
                     'status' => $e->getMessage(),
-                    'code' => 400,
+                    'code' => 400
                 );
             }
         }
